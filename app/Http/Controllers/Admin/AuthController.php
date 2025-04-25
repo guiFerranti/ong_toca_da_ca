@@ -27,6 +27,7 @@ public function login(Request $request)
         return redirect()->route('admin.index');
     }
 
+
     return back()->withErrors([
         'email' => 'As credenciais fornecidas são inválidas.',
     ]);
@@ -54,5 +55,15 @@ public function login(Request $request)
         Auth::guard('admin')->login($admin);
 
         return redirect()->route('admin.index');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }

@@ -15,6 +15,7 @@
         <meta name="error" content="{{ session('error') }}">
     @endif
 
+    <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
     @yield('head')
 </head>
@@ -23,20 +24,24 @@
         [
             'label' => 'Animais',
             'icon'  => asset(''),
-            'route' => route('admin.animais.index'),
+            //'route' => route('admin.animais.index'),
+            'route' => '',
         ],
         [    'label' => 'Formulários',
             'icon'  => asset(''),
-            'route' => route('admin.forms.index'),
+            //'route' => route('admin.forms.index'),
+            'route' => '',
         ],
         [    'label' => 'Prestação de contas',
             'icon'  => asset(''),
-            'route' => route('admin.contas.index'),
+            //'route' => route('admin.contas.index'),
+            'route' => '',
         ],
         [
             'label' => 'Administradores',
             'icon'  => asset(''),
-            'route' => route('admin.admins.index'),
+            //'route' => route('admin.admins.index'),
+            'route' => '',
         ],
     ];
 @endphp
@@ -68,7 +73,7 @@
                 <a href="{{ route('admin.index') }}" class="text-gray-700 hover:text-gray-900">
                     <img src="{{ asset('imgs/profiles/no-image.png') }}" alt="Admin Avatar" class="w-10 h-10 rounded-full">
                 </a>
-                <a href="{{ route('auth.logout') }}" class="ml-4 text-red-600 hover:text-red-800">Logout</a>
+                <a href="{{ route('admin.logout') }}" class="ml-4 text-red-600 hover:text-red-800">Logout</a>
             </div>
         </header>
 
