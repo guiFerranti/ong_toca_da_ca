@@ -1,5 +1,3 @@
-<!-- resources/views/admin/auth/login.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -39,7 +37,7 @@
                 </div>
 
                 <button type="submit"
-                        class="w-full bg-b74bff text-white font-semibold py-2 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-b74bff focus:ring-opacity-50">
+                        class="w-full bg-b74bff text-white font-semibold py-2 px-4 rounded-lg bg-purple-500 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-b74bff focus:ring-opacity-50">
                     Entrar
                 </button>
             </form>
