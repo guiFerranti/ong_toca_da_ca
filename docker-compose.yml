@@ -1,0 +1,55 @@
+version: "3.9"
+
+networks:
+    api_network:
+        name: api_network
+
+services:
+    php-apache:
+        image: webdevops/php-apache-dev:8.2-alpine
+        container_name: api-laravel-back
+        restart: always
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/app
+        environment:
+            WEB_DOCUMENT_ROOT: /app/public
+        depends_on:
+            - mysqldb
+        networks:
+            api_network:
+                aliases:
+                    - api-laravel-back
+
+    mysqldb:
+        image: mysql:8.0
+        container_name: mysqldb-laravel
+        restart: always
+        ports:
+            - "3307:3306"
+        volumes:
+            - ./mysql/data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        networks:
+            api_network:
+                aliases:
+                    - mysqldb
+
+    portainer:
+        image: portainer/portainer
+        container_name: portainer
+        command: -H unix:///var/run/docker.sock
+        restart: always
+        ports:
+            - "9000:9000"
+            - "8000:8000"
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./portainer_data:/data
+        networks:
+            - api_network
