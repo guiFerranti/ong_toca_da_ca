@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AnimalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
 
     Route::middleware(['auth:admin'])->group(function () {
+
         Route::get('/', [AdminController::class, 'index'])->name('index');
+
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::prefix('animals')->name('animals.')->group(function () {
+            Route::get('/', [AnimalController::class, 'index'])->name('index');
+            Route::get('/create', [AnimalController::class, 'create'])->name('create');
+            Route::post('/', [AnimalController::class, 'store'])->name('store');
+        });
     });
 });

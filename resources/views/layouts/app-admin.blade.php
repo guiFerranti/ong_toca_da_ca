@@ -24,8 +24,7 @@
         [
             'label' => 'Animais',
             'icon'  => asset(''),
-            //'route' => route('admin.animais.index'),
-            'route' => '',
+            'route' => route('admin.animals.index'),
         ],
         [    'label' => 'Formulários',
             'icon'  => asset(''),
