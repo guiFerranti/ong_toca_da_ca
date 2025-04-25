@@ -21,6 +21,9 @@ services:
             api_network:
                 aliases:
                     - api-laravel-back
+        build:
+            context: .
+            dockerfile: Dockerfile
 
     mysqldb:
         image: mysql:8.0
