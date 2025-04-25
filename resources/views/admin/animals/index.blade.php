@@ -15,6 +15,7 @@
                 <th class="border px-4 py-2">Nascimento</th>
                 <th class="border px-4 py-2">Idade</th>
                 <th class="border px-4 py-2">Sexo</th>
+                <th class="border px-4 py-2">Ações</th>
             </tr>
             </thead>
             <tbody>
@@ -26,9 +27,17 @@
                     <td class="border px-4 py-2">{{ $animal->data_nascimento ?? '-' }}</td>
                     <td class="border px-4 py-2">{{ $animal->idade ?? '-' }}</td>
                     <td class="border px-4 py-2">{{ $animal->sexo ?? '-' }}</td>
+                    <td class="border px-4 py-2">
+
+                        <form action="{{ route('admin.animals.destroy', $animal->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Deletar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
-                <tr><td colspan="6" class="text-center p-4">Nenhum animal cadastrado.</td></tr>
+                <tr><td colspan="7" class="text-center p-4">Nenhum animal cadastrado.</td></tr>
             @endforelse
             </tbody>
         </table>

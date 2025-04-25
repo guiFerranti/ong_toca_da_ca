@@ -33,4 +33,31 @@ class AnimalController extends Controller
 
         return redirect()->route('admin.animals.index')->with('success', 'Animal cadastrado com sucesso!');
     }
+
+    public function edit(Animal $animal)
+    {
+        return view('admin.animals.edit', compact('animal'));
+    }
+
+    public function update(Request $request, Animal $animal)
+    {
+        $validated = $request->validate([
+            'tipo' => 'required|string',
+            'nome' => 'nullable|string',
+            'data_nascimento' => 'nullable|date',
+            'idade' => 'nullable|string',
+            'sexo' => 'nullable|string',
+        ]);
+
+        $animal->update($validated);
+
+        return redirect()->route('admin.animals.index')->with('success', 'Animal atualizado com sucesso!');
+    }
+
+    public function destroy(Animal $animal)
+    {
+        $animal->delete();
+
+        return redirect()->route('admin.animals.index')->with('success', 'Animal deletado com sucesso!');
+    }
 }

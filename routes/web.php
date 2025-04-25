@@ -36,7 +36,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('animals')->name('animals.')->group(function () {
             Route::get('/', [AnimalController::class, 'index'])->name('index');
             Route::get('/create', [AnimalController::class, 'create'])->name('create');
-            Route::post('/', [AnimalController::class, 'store'])->name('store');
+            Route::post('/create', [AnimalController::class, 'store'])->name('store');
+
+            Route::get('{animal}/edit', [AnimalController::class, 'edit'])->name('edit');
+
+            Route::put('{animal}', [AnimalController::class, 'update'])->name('update');
+
+            Route::delete('{animal}', [AnimalController::class, 'destroy'])->name('destroy');
         });
     });
 });
