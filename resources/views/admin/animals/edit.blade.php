@@ -9,6 +9,11 @@
             @method('PUT')
 
             <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Imagem de Perfil</label>
+                <input type="file" name="img_perfil" class="block w-full rounded-full border p-2 bg-white">
+            </div>
+
+            <div class="mb-4">
                 <label for="tipo" class="block text-gray-700">Tipo</label>
                 <input type="text" name="tipo" id="tipo" class="w-full p-2 border" value="{{ $animal->tipo }}" required>
             </div>
@@ -36,6 +41,22 @@
                     <option value="Feminino" {{ old('sexo', $animal->sexo) === 'Feminino' ? 'selected' : '' }}>Feminino</option>
                 </select>
             </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Imagens adicionais</label>
+                <input type="file" name="imagens[]" multiple class="block w-full border p-2 bg-white">
+            </div>
+
+            @if(isset($animal))
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    @foreach($animal->imagens as $img)
+                        <div class="border p-1">
+                            <img src="{{ asset('storage/' . $img->path) }}" class="w-full h-32 object-cover" alt="Imagem do animal">
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
 
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Atualizar</button>
         </form>
