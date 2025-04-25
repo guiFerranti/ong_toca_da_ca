@@ -30,7 +30,11 @@
 
             <div class="mb-4">
                 <label for="sexo" class="block text-gray-700">Sexo</label>
-                <input type="text" name="sexo" id="sexo" class="w-full p-2 border" value="{{ $animal->sexo }}">
+                <select name="sexo" id="sexo" class="w-full p-2 border">
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Masculino" {{ old('sexo', $animal->sexo) === 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                    <option value="Feminino" {{ old('sexo', $animal->sexo) === 'Feminino' ? 'selected' : '' }}>Feminino</option>
+                </select>
             </div>
 
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Atualizar</button>

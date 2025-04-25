@@ -26,7 +26,7 @@ class AnimalController extends Controller
             'nome' => 'nullable|string|max:255',
             'data_nascimento' => 'nullable|date',
             'idade' => 'nullable|string|max:255',
-            'sexo' => 'nullable|string|max:255',
+            'sexo' => 'required|in:Masculino,Feminino',
         ]);
 
         Animal::create($validated);
@@ -46,7 +46,7 @@ class AnimalController extends Controller
             'nome' => 'nullable|string',
             'data_nascimento' => 'nullable|date',
             'idade' => 'nullable|string',
-            'sexo' => 'nullable|string',
+            'sexo' => 'required|in:Masculino,Feminino',
         ]);
 
         $animal->update($validated);

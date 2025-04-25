@@ -31,9 +31,13 @@
                 <input type="text" name="idade" class="w-full border px-4 py-2 rounded" />
             </div>
 
-            <div>
-                <label class="block">Sexo</label>
-                <input type="text" name="sexo" class="w-full border px-4 py-2 rounded" />
+            <div class="mb-4">
+                <label for="sexo" class="block text-gray-700">Sexo</label>
+                <select name="sexo" id="sexo" class="w-full p-2 border">
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Masculino" {{ old('sexo', $animal->sexo) === 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                    <option value="Feminino" {{ old('sexo', $animal->sexo) === 'Feminino' ? 'selected' : '' }}>Feminino</option>
+                </select>
             </div>
 
             <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded">Salvar</button>
