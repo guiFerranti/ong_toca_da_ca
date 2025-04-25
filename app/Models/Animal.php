@@ -13,4 +13,10 @@ class Animal extends Model
 
     protected $table = 'animals';
     protected $fillable = ['tipo', 'nome', 'data_nascimento', 'idade', 'sexo'];
+
+    public function imagens()
+    {
+        return $this->hasMany(AnimalImage::class);
+    }
+
 }
