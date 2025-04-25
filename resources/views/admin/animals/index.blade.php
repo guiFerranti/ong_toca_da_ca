@@ -28,6 +28,7 @@
                     <td class="border px-4 py-2">{{ $animal->idade ?? '-' }}</td>
                     <td class="border px-4 py-2">{{ $animal->sexo ?? '-' }}</td>
                     <td class="border px-4 py-2">
+                        <a href="{{ route('admin.animals.edit', $animal->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded inline-block">Editar</a>
 
                         <form action="{{ route('admin.animals.destroy', $animal->id) }}" method="POST" class="inline-block">
                             @csrf
