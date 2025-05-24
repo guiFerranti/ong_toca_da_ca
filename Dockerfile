@@ -1,22 +1,19 @@
-FROM webdevops/php-apache-dev:8.2-alpine
+FROM php:8.2-fpm
 
-RUN apk add --no-cache \
-    nodejs \
-    npm \
-    build-base \
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
     libpng-dev \
-    libjpeg-turbo-dev \
-    libwebp-dev \
-    sqlite-dev
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
 
-COPY . /app
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-RUN npm install
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-ENV WEB_DOCUMENT_ROOT /app/public
-
-EXPOSE 80
-
-CMD ["tail", "-f", "/dev/null"]
+RUN chown -R www-data:www-data /var/www
+USER www-data
