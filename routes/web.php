@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [\App\Http\Controllers\Publics\HomeController::class, 'show'])->name('home.show');
+
+
 Route::get('/adocao/cadastro/{id_pet}', [\App\Http\Controllers\Publics\AdocaoController::class, 'create'])->name('adocao.create');
 Route::post('/adocao', [\App\Http\Controllers\Publics\AdocaoController::class, 'store'])->name('adocao.store');
 

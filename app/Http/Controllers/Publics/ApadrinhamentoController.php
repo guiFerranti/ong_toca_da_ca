@@ -9,7 +9,7 @@ class ApadrinhamentoController extends Controller
 {
     public function create($id_pet)
     {
-        return view('public.apadrinhamento.create', compact('id_pet'));
+        return view('publics.apadrinhamento.create', compact('id_pet'));
     }
 
     public function store(Request $request)
