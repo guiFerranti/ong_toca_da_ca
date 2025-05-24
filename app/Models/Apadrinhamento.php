@@ -1,0 +1,25 @@
+<?php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Apadrinhamento extends Model
+{
+    protected $fillable = [
+        'nome',
+        'nascimento',
+        'cpf',
+        'telefone',
+        'email',
+        'endereco',
+        'tipo_pet',
+        'nome_pet',
+        'tipo_apadrinhamento',
+        'contribuicao',
+        'frequencia',
+        'visita_regular',
+        'receber_atualizacoes',
+        'aceita_termos',
+        'id_pet',
+    ];
+}
