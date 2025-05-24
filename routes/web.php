@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnimalController;
+use App\Http\Controllers\Admin\AuthController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
