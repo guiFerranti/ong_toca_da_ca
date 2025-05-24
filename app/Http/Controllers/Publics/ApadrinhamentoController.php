@@ -36,4 +36,9 @@ class ApadrinhamentoController extends Controller
 
         return redirect()->route('home')->with('success', 'Apadrinhamento registrado com sucesso.');
     }
+
+    public function show()
+    {
+        return view('publics.apadrinhamento.show');
+    }
 }

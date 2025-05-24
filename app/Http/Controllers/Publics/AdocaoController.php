@@ -57,4 +57,9 @@ class AdocaoController extends Controller
         return redirect()->route('adocao.create', ['id_pet' => $data['id_pet']])
             ->with('success', 'Formulário enviado com sucesso!');
     }
+
+    public function show()
+    {
+        return  view('publics.adocao.show');
+    }
 }

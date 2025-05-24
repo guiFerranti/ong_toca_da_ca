@@ -26,8 +26,12 @@ Route::get('/', [\App\Http\Controllers\Publics\HomeController::class, 'show'])->
 Route::get('/adocao/cadastro/{id_pet}', [\App\Http\Controllers\Publics\AdocaoController::class, 'create'])->name('adocao.create');
 Route::post('/adocao', [\App\Http\Controllers\Publics\AdocaoController::class, 'store'])->name('adocao.store');
 
+Route::get('/adocao', [\App\Http\Controllers\Publics\AdocaoController::class, 'show'])->name('adocao.show');
+
 Route::get('/apadrinhamento/cadastro/{id_pet}', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'create'])->name('apadrinhamento.create');
 Route::post('/apadrinhamento', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'store'])->name('apadrinhamento.store');
+
+Route::get('/apadrinhamento', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'show'])->name('apadrinhamento.show');
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
