@@ -35,7 +35,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('apadrinhamento.show') }}">
+            <a href="{{ route('publics.apoia-se.index') }}">
                 <div
                     class="h-full flex flex-col aspect-square w-full sm:w-[150px] bg-[#0c9d44] rounded-md p-4 sm:p-6 items-center justify-center text-center">
                     <svg height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('adocao.show') }}">
+            <a href="{{ route('sobre-nos.index') }}">
                 <div
                     class="flex flex-col aspect-square w-full sm:w-[150px] bg-[#bc7af8] rounded-md p-4 sm:p-6 items-center justify-center text-center">
                     <img src="{{ asset('imgs/logo.jpg') }}" alt="Admin Logo"
@@ -121,33 +121,35 @@
                     <div class="swiper-wrapper">
                         @foreach($animais as $animal)
                             <div class="swiper-slide">
-                                <div class="bg-[#dcaefb] rounded-xl shadow-lg p-4 h-full mx-2">
-                                    <div class="h-40 overflow-hidden rounded-lg mb-3">
-                                        <img
-                                            src="{{ asset('storage/animals/' . basename($animal->img_perfil)) }}"
-                                            alt="{{ $animal->nome }}"
-                                            class="w-full h-full object-cover"
-                                        >
+                                <a href="{{ route('adocao.index', $animal->id) }}">
+                                    <div class="bg-[#dcaefb] rounded-xl shadow-lg p-4 h-full mx-2">
+                                        <div class="h-40 overflow-hidden rounded-lg mb-3">
+                                            <img
+                                                src="{{ asset('storage/animals/' . basename($animal->img_perfil)) }}"
+                                                alt="{{ $animal->nome }}"
+                                                class="w-full h-full object-cover"
+                                            >
+                                        </div>
+                                        <h3 class="font-bold text-gray-800 text-lg">{{ $animal->nome }}</h3>
+                                        @php
+                                            $nascimento = \Carbon\Carbon::parse($animal->data_nascimento);
+                                            $hoje = \Carbon\Carbon::now();
+                                            $diff = $nascimento->diff($hoje);
+
+                                            $anos = $diff->y;
+                                            $meses = $diff->m;
+                                        @endphp
+
+                                        <td class="border px-4 py-2 text-center">
+                                            @if ($anos >= 1)
+                                                {{ $anos }} {{ $anos === 1 ? 'ano' : 'anos' }}
+                                            @else
+                                                {{ $meses }} {{ $meses === 1 ? 'mês' : 'meses' }}
+                                            @endif
+                                        </td>
+                                        <p class="text-gray-700 text-sm mt-2 line-clamp-2">{{ $animal->small_description }}</p>
                                     </div>
-                                    <h3 class="font-bold text-gray-800 text-lg">{{ $animal->nome }}</h3>
-                                    @php
-                                        $nascimento = \Carbon\Carbon::parse($animal->data_nascimento);
-                                        $hoje = \Carbon\Carbon::now();
-                                        $diff = $nascimento->diff($hoje);
-
-                                        $anos = $diff->y;
-                                        $meses = $diff->m;
-                                    @endphp
-
-                                    <td class="border px-4 py-2 text-center">
-                                        @if ($anos >= 1)
-                                            {{ $anos }} {{ $anos === 1 ? 'ano' : 'anos' }}
-                                        @else
-                                            {{ $meses }} {{ $meses === 1 ? 'mês' : 'meses' }}
-                                        @endif
-                                    </td>
-                                    <p class="text-gray-700 text-sm mt-2 line-clamp-2">{{ $animal->small_description }}</p>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
 

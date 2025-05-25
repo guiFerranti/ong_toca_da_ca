@@ -38,6 +38,9 @@ Route::post('/apadrinhamento', [\App\Http\Controllers\Publics\ApadrinhamentoCont
 
 Route::get('/apadrinhamento', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'show'])->name('apadrinhamento.show');
 
+Route::view('/sobre-nos', 'publics.sobre-nos.index')->name('sobre-nos.index');
+Route::view('/apoia-se', 'publics.apoia-se.index')->name('publics.apoia-se.index');
+
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
