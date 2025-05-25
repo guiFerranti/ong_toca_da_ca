@@ -20,31 +20,31 @@ class Adocao extends Model
         'telefone',
         'email',
         'endereco',
-        'tipo_residencia',
-        'imovel_proprio',
-        'permite_animais',
+        'tipo_moradia',
+        'tipo_imovel',
+        'permite_pet',
 
         'tipo_pet',
         'nome_pet',
 
         'qt_pessoas',
-        'todos_de_acordo',
+        'todos_aceitam',
         'tem_criancas',
         'tem_animais',
-        'quais_animais',
-        'vacinados_castrados',
-        'onde_dia',
-        'onde_noite',
-        'acesso_interior',
+        'animais_info',
+        'todos_vacinados',
+        'local_dia',
+        'local_noite',
+        'acesso_interno',
 
-        'consciencia_longevidade',
-        'condicao_financeira',
+        'ciente_longevidade',
+        'cond_financeira',
         'ja_abandonou',
         'motivo_abandono',
-        'aceita_termos',
-        'status'
-
+        'aceita_termo',
+        'status',
     ];
+
 
     public function scopeStatusOrder($query)
     {

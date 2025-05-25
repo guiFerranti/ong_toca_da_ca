@@ -88,8 +88,8 @@
                         <select name="tipo_pet"
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('tipo_pet') border-red-500 @enderror">
                             <option value="">Selecione</option>
-                            <option value="Cão" @if(old('tipo_pet') == 'Cão') selected @endif>Cão</option>
-                            <option value="Gato" @if(old('tipo_pet') == 'Gato') selected @endif>Gato</option>
+                            <option value="Cão" @if (old('tipo_pet') == 'Cão') selected @endif>Cão</option>
+                            <option value="Gato" @if (old('tipo_pet') == 'Gato') selected @endif>Gato</option>
                         </select>
                         @error('tipo_pet')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -135,11 +135,12 @@
                         <select name="frequencia"
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('frequencia') border-red-500 @enderror">
                             <option value="">Selecione</option>
-                            <option value="Semanal" @if(old('frequencia') == 'Semanal') selected @endif>Semanal</option>
-                            <option value="Quinzenal" @if(old('frequencia') == 'Quinzenal') selected @endif>Quinzenal
+                            <option value="Semanal" @if (old('frequencia') == 'Semanal') selected @endif>Semanal
                             </option>
-                            <option value="Mensal" @if(old('frequencia') == 'Mensal') selected @endif>Mensal</option>
-                            <option value="Única" @if(old('frequencia') == 'Única') selected @endif>Única</option>
+                            <option value="Quinzenal" @if (old('frequencia') == 'Quinzenal') selected @endif>Quinzenal
+                            </option>
+                            <option value="Mensal" @if (old('frequencia') == 'Mensal') selected @endif>Mensal</option>
+                            <option value="Única" @if (old('frequencia') == 'Única') selected @endif>Única</option>
                         </select>
                         @error('frequencia')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -152,8 +153,8 @@
                         <select name="visita_regular"
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('visita_regular') border-red-500 @enderror">
                             <option value="">Selecione</option>
-                            <option value="1" @if(old('visita_regular') == '1') selected @endif>Sim</option>
-                            <option value="0" @if(old('visita_regular') == '0') selected @endif>Não</option>
+                            <option value="1" @if (old('visita_regular') == '1') selected @endif>Sim</option>
+                            <option value="0" @if (old('visita_regular') == '0') selected @endif>Não</option>
                         </select>
                         @error('visita_regular')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -166,8 +167,8 @@
                         <select name="receber_atualizacoes"
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('receber_atualizacoes') border-red-500 @enderror">
                             <option value="">Selecione</option>
-                            <option value="1" @if(old('receber_atualizacoes') == '1') selected @endif>Sim</option>
-                            <option value="0" @if(old('receber_atualizacoes') == '0') selected @endif>Não</option>
+                            <option value="1" @if (old('receber_atualizacoes') == '1') selected @endif>Sim</option>
+                            <option value="0" @if (old('receber_atualizacoes') == '0') selected @endif>Não</option>
                         </select>
                         @error('receber_atualizacoes')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

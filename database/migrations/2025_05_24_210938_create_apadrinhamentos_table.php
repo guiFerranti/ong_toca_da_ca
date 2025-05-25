@@ -29,7 +29,7 @@ return new class extends Migration
 
             $table->tinyInteger('visita_regular');
             $table->tinyInteger('receber_atualizacoes');
-            $table->tinyInteger('aceita_termos');
+            $table->tinyInteger('aceita_termo');
 
             $table->unsignedBigInteger('id_pet')->nullable();
             $table->foreign('id_pet')

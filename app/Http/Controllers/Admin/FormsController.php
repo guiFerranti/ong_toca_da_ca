@@ -15,8 +15,8 @@ class FormsController extends Controller
         $perPage = 15;
 
         $forms = $type === 'adocao'
-            ? Adocao::with('statusOrder')->latest()->paginate($perPage)
-            : Apadrinhamento::with('statusOrder')->latest()->paginate($perPage);
+            ? Adocao::statusOrder()->latest()->paginate($perPage)
+            : Apadrinhamento::statusOrder()->latest()->paginate($perPage);
 
         return view('admin.forms.index', compact('forms', 'type'));
     }
