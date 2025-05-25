@@ -94,6 +94,28 @@
         </div>
 
         <div class="bg-[#d3a0ed] py-12 w-full">
+            <div class="text-center mb-8 md:mb-12">
+                <div class="inline-flex flex-col items-center relative">
+                    <svg class="absolute -top-6 -left-8 w-12 h-12 text-[#ffffff33]" viewBox="0 0 24 24"
+                         fill="currentColor">
+                        <path
+                            d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"/>
+                    </svg>
+
+                    <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#a516e6] to-[#b74bff] bg-clip-text text-transparent mb-3">
+                        Conheça Nossos Animais
+                    </h2>
+
+                    <p class="text-lg md:text-xl text-white font-semibold max-w-2xl mx-auto leading-relaxed relative group">
+                    <span class="bg-white/10 px-4 py-2 rounded-full">
+                        Cada rabinho abanando espera por um lar cheio de amor
+                        <span class="text-[#ffd700] ml-2">
+                            ❤
+                        </span>
+                    </span>
+                    </p>
+                </div>
+            </div>
             <div class="container mx-auto px-4">
                 <div class="animais-carrossel swiper">
                     <div class="swiper-wrapper">
@@ -108,7 +130,22 @@
                                         >
                                     </div>
                                     <h3 class="font-bold text-gray-800 text-lg">{{ $animal->nome }}</h3>
-                                    <p class="text-gray-600 text-sm">{{ $animal->idade }} anos</p>
+                                    @php
+                                        $nascimento = \Carbon\Carbon::parse($animal->data_nascimento);
+                                        $hoje = \Carbon\Carbon::now();
+                                        $diff = $nascimento->diff($hoje);
+
+                                        $anos = $diff->y;
+                                        $meses = $diff->m;
+                                    @endphp
+
+                                    <td class="border px-4 py-2 text-center">
+                                        @if ($anos >= 1)
+                                            {{ $anos }} {{ $anos === 1 ? 'ano' : 'anos' }}
+                                        @else
+                                            {{ $meses }} {{ $meses === 1 ? 'mês' : 'meses' }}
+                                        @endif
+                                    </td>
                                     <p class="text-gray-700 text-sm mt-2 line-clamp-2">{{ $animal->small_description }}</p>
                                 </div>
                             </div>
