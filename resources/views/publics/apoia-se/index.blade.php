@@ -26,7 +26,7 @@
                             <a href="https://apoia.se/tocadaca" target="_blank"
                                class="inline-block bg-[#0c9d44] hover:bg-[#0b843a] text-white
                                   px-6 py-2 rounded-full transition-colors">
-                                Acesse diretamente
+                                Doe pela vakinha
                             </a>
                         </div>
                     </div>
