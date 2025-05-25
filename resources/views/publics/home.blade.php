@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="h-full w-full flex flex-col items-center">
-        <div class="flex gap-10 w-2/3 py-8 items-center justify-center">
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-10 w-full max-w-4xl py-8">
+
             <a href="{{ route('adocao.show') }}">
                 <div
-                    class="flex flex-col h-[150px] w-[150px] bg-[#0c9d44] rounded-md p-6 items-center justify-center">
+                    class="h-full flex flex-col aspect-square w-full sm:w-[150px] bg-[#0c9d44] rounded-md p-4 sm:p-6 items-center justify-center text-center">
                     <svg height="60px" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"
                          fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -27,16 +28,17 @@
                                       d="M503.068,190.289v-0.01c-16.705-25.805-51.166-33.18-76.976-16.489c-25.801,16.7-33.19,51.171-16.486,76.986 v-0.01c16.7,25.806,51.158,33.19,76.968,16.481C512.374,250.557,519.764,216.095,503.068,190.289z"></path>
                             </g>
                         </g></svg>
-                    <span class="text-2xl font-bold text-white">
-                    Adoção
-                </span>
+
+                    <span class="mt-2 text-sm sm:text-base font-bold text-white leading-tight">
+                        Adoção
+                    </span>
                 </div>
             </a>
 
             <a href="{{ route('apadrinhamento.show') }}">
                 <div
-                    class="flex flex-col h-[150px] w-[150px] bg-[#0c9d44] rounded-md p-6 items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    class="h-full flex flex-col aspect-square w-full sm:w-[150px] bg-[#0c9d44] rounded-md p-4 sm:p-6 items-center justify-center text-center">
+                    <svg height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
@@ -50,16 +52,18 @@
                                   stroke-width="1.5"></rect>
                         </g>
                     </svg>
-                    <span class="text-2xl font-bold text-white">
-                    Doação
-                </span>
+
+                    <span class="mt-2 text-sm sm:text-base font-bold text-white leading-tight">
+                        Doação
+                    </span>
                 </div>
             </a>
 
             <a href="{{ route('adocao.show') }}">
                 <div
-                    class="flex flex-col h-[150px] w-[150px] bg-[#0c9d44] rounded-md p-6 items-center justify-center">
-                    <svg height="50px" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+                    class="h-full flex flex-col aspect-square w-full sm:w-[150px] bg-[#0c9d44] rounded-md p-4 sm:p-6 items-center justify-center text-center">
+                    <svg height="60px"
+                         fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
@@ -69,24 +73,23 @@
                                 d="M6.25 7a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm-.75 4.75a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75zm16.28 4.53a.75.75 0 10-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.06 0l5.5-5.5z"></path>
                         </g>
                     </svg>
-                    <span class="text-2xl font-bold text-white">
-                    Prestação de contas
-                </span>
+
+                    <span class="mt-2 text-sm sm:text-base font-bold text-white leading-tight">
+                        Prestação<br>de contas
+                    </span>
                 </div>
             </a>
 
             <a href="{{ route('adocao.show') }}">
                 <div
-                    class="flex flex-col h-[150px] w-[150px] bg-[#bc7af8] rounded-md p-6 items-center justify-center">
-                    <img src="{{ asset('imgs/logo.jpg') }}" alt="Admin Logo" class="w-32 mx-auto">
-                    <span class="text-2xl font-bold text-white">
-                    Sobre nós
-                </span>
+                    class="flex flex-col aspect-square w-full sm:w-[150px] bg-[#bc7af8] rounded-md p-4 sm:p-6 items-center justify-center text-center">
+                    <img src="{{ asset('imgs/logo.jpg') }}" alt="Admin Logo"
+                         class="w-16 max-h-12 sm:w-20 sm:max-h-16 object-contain mb-1">
+                    <span class="text-sm sm:text-base font-bold text-white leading-tight">
+                        Sobre nós
+                    </span>
                 </div>
             </a>
-        </div>
-
-        <div>
 
         </div>
     </div>
