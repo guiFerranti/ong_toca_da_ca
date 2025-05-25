@@ -14,9 +14,9 @@ class ApadrinhamentoController extends Controller
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'nascimento' => 'required|date',
-            'cpf' => 'required|string|max:20|unique:apadrinhamentos,cpf',
+            'cpf' => 'required|string|max:20',
             'telefone' => 'required|string|max:20',
-            'email' => 'required|email|max:255|unique:apadrinhamentos,email',
+            'email' => 'required|email|max:255',
             'endereco' => 'required|string|max:255',
             'tipo_pet' => 'required|string|max:10',
             'nome_pet' => 'required|string|max:255',
@@ -31,7 +31,7 @@ class ApadrinhamentoController extends Controller
 
         Apadrinhamento::create($validated);
 
-        return redirect()->route('home')->with('success', 'Apadrinhamento registrado com sucesso.');
+        return redirect()->route('home.show')->with('success', 'Apadrinhamento registrado com sucesso.');
     }
 
     public function create($id_pet)

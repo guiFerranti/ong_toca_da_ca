@@ -36,7 +36,7 @@
                         <td class="px-6 py-4">{{ $form->nome }}</td>
                         <td class="px-6 py-4">
                             <select class="status-select border rounded px-2 py-1 text-sm
-                            {{ $form->status === 'Não lido' ? 'bg-red-100 text-red-800' :
+                            {{ !$form->status || $form->status === 'Não lido' ? 'bg-red-100 text-red-800' :
                                ($form->status === 'Lido' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800') }}"
                                     data-type="{{ $type }}"
                                     data-id="{{ $form->id }}">
@@ -70,7 +70,7 @@
                 const id = this.dataset.id;
                 const status = this.value;
 
-                fetch(`/admin/forms/${type}/${id}/status`, {
+                fetch(`/admin/animals/forms/${type}/${id}/status`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -87,6 +87,7 @@
                             }`;
                         }
                     });
+                console.log('teste');
             });
         });
     </script>
