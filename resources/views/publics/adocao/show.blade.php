@@ -33,7 +33,7 @@
                             </span>
 
                             @php
-                                $nascimento = \Carbon\Carbon::parse($animal->nascimento);
+                                $nascimento = \Carbon\Carbon::parse($animal->data_nascimento);
                                 $hoje = \Carbon\Carbon::now();
                                 $anos = $nascimento->diffInYears($hoje);
 

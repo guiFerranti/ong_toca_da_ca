@@ -21,6 +21,12 @@ class AnimalController extends Controller
 
     public function update(Request $request, Animal $animal)
     {
+        $request->merge([
+            'testado_fiv_felv' => $request->has('testado_fiv_felv'),
+            'is_castrado' => $request->has('is_castrado'),
+            'is_active' => $request->has('is_active'),
+        ]);
+
         $validated = $request->validate([
             'tipo' => 'required|in:Gato,Cachorro',
             'nome' => 'required|string|max:255',
@@ -29,10 +35,10 @@ class AnimalController extends Controller
             'img_perfil' => 'nullable|image|max:2048',
             'small_description' => 'required|string',
             'description' => 'nullable|string',
-            'testado_fiv_felv' => 'nullable|boolean',
-            'is_castrado' => 'nullable|boolean',
-            'is_active' => 'nullable|boolean',
-        ], ['*.required' => 'Campo obrigatório']);
+            'testado_fiv_felv' => 'nullable',
+            'is_castrado' => 'nullable',
+            'is_active' => 'nullable',
+        ]);
 
         if ($request->hasFile('img_perfil')) {
             $validated['img_perfil'] = $request->file('img_perfil')->store('animals', 'public');
@@ -52,20 +58,33 @@ class AnimalController extends Controller
             'tipo' => 'required|in:Gato,Cachorro',
             'nome' => 'required|string|max:255',
             'data_nascimento' => 'required|date|before_or_equal:today',
-            'idade' => 'nullable|string|max:255',
             'sexo' => 'required|in:Masculino,Feminino',
             'img_perfil' => 'required|image|max:2048',
-            
-        ], ['*.required' => 'Campo obrigatório']);
+            'small_description' => 'required|string|max:500',
+            'description' => 'nullable|string|max:2000',
+            'is_active' => 'nullable',
+            'testado_fiv_felv' => 'nullable',
+            'is_castrado' => 'nullable',
+        ], [
+            '*.required' => 'Campo obrigatório',
+            'img_perfil.image' => 'O arquivo deve ser uma imagem',
+            'img_perfil.max' => 'A imagem não pode ter mais que 2MB',
+        ]);
+
+        $validated['is_active'] = $request->has('is_active');
+        $validated['testado_fiv_felv'] = $request->has('testado_fiv_felv');
+        $validated['is_castrado'] = $request->has('is_castrado');
 
         if ($request->hasFile('img_perfil')) {
-            $validated['img_perfil'] = $request->file('img_perfil')->store('animals', 'public');
+            $path = $request->file('img_perfil')->store('animais/perfis', 'public');
+            $validated['img_perfil'] = $path;
         }
 
         Animal::create($validated);
 
-        return redirect()->route('admin.animals.index')->with('success', 'Animal cadastrado com sucesso!');
+        return redirect()->route('admin.animals.index')->with('success', 'Animal cadastrado com sucesso.');
     }
+
 
     public function create()
     {
@@ -81,12 +100,12 @@ class AnimalController extends Controller
 
     public function toggleStatus(Animal $animal)
     {
-        $animal->ativo = !$animal->ativo;
+        $animal->is_active = !$animal->is_active;
         $animal->save();
 
         return response()->json([
             'success' => true,
-            'status' => $animal->ativo ? 'Ativo' : 'Inativo',
+            'status' => $animal->is_active ? 'Ativo' : 'Inativo',
         ]);
     }
 

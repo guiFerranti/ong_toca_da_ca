@@ -7,6 +7,11 @@
         <form action="{{ route('admin.animals.store') }}" method="POST" enctype="multipart/form-data"
               class="bg-white rounded-lg shadow-md p-4 md:p-6 space-y-4 md:space-y-6">
             @csrf
+            @if ($errors->any())
+                @foreach($errors->all as $error)
+                    {{$error}}
+                @endforeach
+            @endif
 
             <div class="border-b pb-4 md:pb-6">
                 <h2 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-gray-700">Informações Básicas</h2>
