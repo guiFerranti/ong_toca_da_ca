@@ -93,7 +93,7 @@
 
         </div>
 
-        <div class="bg-[#d3a0ed] py-12">
+        <div class="bg-[#d3a0ed] py-12 w-full">
             <div class="container mx-auto px-4">
                 <div class="animais-carrossel swiper">
                     <div class="swiper-wrapper">
