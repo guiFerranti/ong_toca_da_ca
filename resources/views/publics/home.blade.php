@@ -116,7 +116,7 @@
             </div>
         </section>
 
-        <div class="bg-[#d3a0ed] py-12 w-full">
+        <div class="bg-[#d3a0ed] py-12 w-full overflow-hidden">
             <div class="text-center mb-8 md:mb-12">
                 <div class="inline-flex flex-col items-center relative">
                     <svg class="absolute -top-6 -left-8 w-12 h-12 text-[#ffffff33]" viewBox="0 0 24 24"
