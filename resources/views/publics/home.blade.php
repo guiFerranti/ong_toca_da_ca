@@ -93,6 +93,29 @@
 
         </div>
 
+        <section class="bg-gradient-to-r from-[#a516e6] to-[#b74bff] py-16 text-white w-full">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="p-4">
+                        <p class="text-3xl font-bold mb-2">1K+</p>
+                        <p class="text-sm">Animais resgatados</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-3xl font-bold mb-2">85%</p>
+                        <p class="text-sm">Taxa de adoção</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-3xl font-bold mb-2">15+</p>
+                        <p class="text-sm">Parcerias ativas</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-3xl font-bold mb-2">24/7</p>
+                        <p class="text-sm">Atendimento veterinário</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="bg-[#d3a0ed] py-12 w-full">
             <div class="text-center mb-8 md:mb-12">
                 <div class="inline-flex flex-col items-center relative">
@@ -174,4 +197,5 @@
             </div>
         </div>
     </div>
+
 @endsection
