@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -21,5 +22,11 @@ class Apadrinhamento extends Model
         'receber_atualizacoes',
         'aceita_termos',
         'id_pet',
+        'status'
     ];
+
+    public function scopeStatusOrder($query)
+    {
+        return $query->orderByRaw("FIELD(status, 'Não lido', 'Lido', 'Concluído')");
+    }
 }

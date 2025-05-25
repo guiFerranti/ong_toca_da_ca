@@ -28,8 +28,7 @@
         ],
         [    'label' => 'Formulários',
             'icon'  => asset(''),
-            //'route' => route('admin.forms.index'),
-            'route' => '',
+            'route' => route('admin.animals.forms.index'),
         ],
         [    'label' => 'Prestação de contas',
             'icon'  => asset(''),
@@ -55,7 +54,8 @@
                 <ul>
                     @foreach ($adminRoutes as $route)
                         <li class="mb-4">
-                            <a href="{{ $route['route'] }}" class="block py-2 px-4 rounded hover:bg-gray-700 transition">
+                            <a href="{{ $route['route'] }}"
+                               class="block py-2 px-4 rounded hover:bg-gray-700 transition">
                                 {{ $route['label'] }}
                             </a>
                         </li>
@@ -67,10 +67,11 @@
 
     <div class="flex-1 flex flex-col">
         <header class="bg-white shadow p-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-primary" >@yield('content-title', 'Admin Dashboard')</h1>
+            <h1 class="text-xl font-bold text-primary">@yield('content-title', 'Admin Dashboard')</h1>
             <div class="flex items-center">
                 <a href="{{ route('admin.index') }}" class="text-gray-700 hover:text-gray-900">
-                    <img src="{{ asset('imgs/profiles/no-image.png') }}" alt="Admin Avatar" class="w-10 h-10 rounded-full">
+                    <img src="{{ asset('imgs/profiles/no-image.png') }}" alt="Admin Avatar"
+                         class="w-10 h-10 rounded-full">
                 </a>
                 <a href="{{ route('admin.logout') }}" class="ml-4 text-red-600 hover:text-red-800">Logout</a>
             </div>

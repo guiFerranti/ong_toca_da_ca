@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\FormsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('{animal}', [AnimalController::class, 'update'])->name('update');
 
             Route::delete('{animal}', [AnimalController::class, 'destroy'])->name('destroy');
+
+            Route::prefix('forms')->name('forms.')->group(function () {
+                Route::get('/', [FormsController::class, 'index'])->name('index');
+                Route::get('/{type}/{id}', [FormsController::class, 'show'])->name('show');
+                Route::put('/{type}/{id}/status', [FormsController::class, 'updateStatus'])->name('update-status');
+            });
         });
     });
 });

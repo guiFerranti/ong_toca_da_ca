@@ -27,7 +27,7 @@ class Adocao extends Model
         'tipo_pet',
         'nome_pet',
 
-        'qtd_pessoas',
+        'qt_pessoas',
         'todos_de_acordo',
         'tem_criancas',
         'tem_animais',
@@ -42,5 +42,13 @@ class Adocao extends Model
         'ja_abandonou',
         'motivo_abandono',
         'aceita_termos',
+        'status'
+
     ];
+
+    public function scopeStatusOrder($query)
+    {
+        return $query->orderByRaw("FIELD(status, 'Não lido', 'Lido', 'Concluído')");
+    }
+
 }
