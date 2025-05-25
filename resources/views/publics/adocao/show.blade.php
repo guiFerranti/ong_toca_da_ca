@@ -20,11 +20,33 @@
             @if($animais)
                 @foreach($animais as $index => $animal)
                     <a href="{{ route('adocao.index', $animal->id) }}">
-                        <div class="h-[150px] w-[150px] bg-[#cbc9cc] rounded-lg flex flex-col p-2 items-center justify-center">
-                            <img class="rounded-lg" src="{{$animal->img_perfil}}" alt="imagem animal {{$animal->nome}}"/>
-                            <span>
-                                {{$animal->nome}}
+                        <div
+                            class="h-[250px] w-[250px] bg-[#cbc9cc] rounded-lg flex flex-col p-2 items-center justify-between">
+                            <img class="rounded-lg" src="{{ asset('/storage/'.$animal->img_perfil) }}"
+                                 alt="imagem animal {{$animal->nome}}"/>
+                            <span class="font-bold text-xl text-[#a416e6]">
+                                {{ $animal->nome }}
                             </span>
+
+                            <span class="font-bold text-lg text-[#a416e6]">
+                                {{ $animal->small_description }}
+                            </span>
+
+                            @php
+                                $nascimento = \Carbon\Carbon::parse($animal->nascimento);
+                                $hoje = \Carbon\Carbon::now();
+                                $anos = $nascimento->diffInYears($hoje);
+
+                                $meses = $anos < 1 ? $nascimento->diffInMonths($hoje) : 0;
+                            @endphp
+
+                            <span class="font-bold text-lg text-[#a416e6]">
+                                @if ($anos >= 1)
+                                    {{ $anos }} {{ $anos === 1 ? 'ano' : 'anos' }}
+                                @else
+                                    {{ $meses }} {{ $meses === 1 ? 'mês' : 'meses' }}
+                                @endif
+                        </span>
                         </div>
                     </a>
                 @endforeach

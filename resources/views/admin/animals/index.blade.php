@@ -4,7 +4,8 @@
     <div class="container mx-auto p-4">
         <h1 class="text-2xl font-bold mb-4">Animais</h1>
 
-        <a href="{{ route('admin.animals.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Novo Animal</a>
+        <a href="{{ route('admin.animals.create') }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Novo Animal</a>
 
         <table class="w-full border-collapse">
             <thead>
@@ -28,17 +29,29 @@
                     <td class="border px-4 py-2">{{ $animal->idade ?? '-' }}</td>
                     <td class="border px-4 py-2">{{ $animal->sexo ?? '-' }}</td>
                     <td class="border px-4 py-2">
-                        <a href="{{ route('admin.animals.edit', $animal->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded inline-block">Editar</a>
+                        <a href="{{ route('admin.animals.edit', $animal->id) }}"
+                           class="bg-yellow-500 text-white px-4 py-2 rounded inline-block">Editar</a>
 
-                        <form action="{{ route('admin.animals.destroy', $animal->id) }}" method="POST" class="inline-block">
+                        <form action="{{ route('admin.animals.destroy', $animal->id) }}" method="POST"
+                              class="inline-block">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Deletar</button>
                         </form>
+
+                        <button
+                            class="bg-gray-700 text-white px-4 py-2 rounded inline-block toggle-status-btn mt-1"
+                            data-id="{{ $animal->id }}"
+                        >
+                            {{ $animal->ativo ? 'Inativar' : 'Ativar' }}
+                        </button>
+
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="text-center p-4">Nenhum animal cadastrado.</td></tr>
+                <tr>
+                    <td colspan="7" class="text-center p-4">Nenhum animal cadastrado.</td>
+                </tr>
             @endforelse
             </tbody>
         </table>
@@ -48,3 +61,35 @@
         </div>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.toggle-status-btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = this.dataset.id;
+                const button = this;
+
+                fetch(`/admin/animals/${id}/toggle-status`, {
+                    method: 'PATCH',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            button.textContent = data.status === 'Ativo' ? 'Inativar' : 'Ativar';
+                            button.classList.toggle('bg-gray-700');
+                            button.classList.toggle('bg-green-600');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Erro ao alternar status:', err);
+                    });
+            });
+        });
+    });
+</script>

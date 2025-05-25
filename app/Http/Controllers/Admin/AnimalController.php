@@ -23,13 +23,16 @@ class AnimalController extends Controller
     {
         $validated = $request->validate([
             'tipo' => 'required|in:Gato,Cachorro',
-            'nome' => 'nullable|string|max:255',
-            'data_nascimento' => 'nullable|date',
-            'idade' => 'nullable|string|max:255',
+            'nome' => 'required|string|max:255',
+            'data_nascimento' => 'required|date|before_or_equal:today',
             'sexo' => 'required|in:Masculino,Feminino',
             'img_perfil' => 'nullable|image|max:2048',
-            'imagens.*' => 'nullable|image|max:2048',
-        ]);
+            'small_description' => 'required|string',
+            'description' => 'nullable|string',
+            'testado_fiv_felv' => 'nullable|boolean',
+            'is_castrado' => 'nullable|boolean',
+            'is_active' => 'nullable|boolean',
+        ], ['*.required' => 'Campo obrigatório']);
 
         if ($request->hasFile('img_perfil')) {
             $validated['img_perfil'] = $request->file('img_perfil')->store('animals', 'public');
@@ -37,41 +40,29 @@ class AnimalController extends Controller
 
         $animal->update($validated);
 
-        if ($request->hasFile('imagens')) {
-            foreach ($request->file('imagens') as $img) {
-                $animal->imagens()->create([
-                    'path' => $img->store('animal_galeria', 'public'),
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.animals.index')->with('success', 'Animal atualizado com sucesso!');
+        return redirect()
+            ->route('admin.animals.index')
+            ->with('success', 'Animal atualizado com sucesso!');
     }
+
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'tipo' => 'required|in:Gato,Cachorro',
-            'nome' => 'nullable|string|max:255',
-            'data_nascimento' => 'nullable|date',
+            'nome' => 'required|string|max:255',
+            'data_nascimento' => 'required|date|before_or_equal:today',
             'idade' => 'nullable|string|max:255',
             'sexo' => 'required|in:Masculino,Feminino',
             'img_perfil' => 'required|image|max:2048',
-        ]);
+            
+        ], ['*.required' => 'Campo obrigatório']);
 
         if ($request->hasFile('img_perfil')) {
             $validated['img_perfil'] = $request->file('img_perfil')->store('animals', 'public');
         }
 
-        $animal = Animal::create($validated);
-
-        if ($request->hasFile('imagens')) {
-            foreach ($request->file('imagens') as $img) {
-                $animal->imagens()->create([
-                    'path' => $img->store('animal_galeria', 'public'),
-                ]);
-            }
-        }
+        Animal::create($validated);
 
         return redirect()->route('admin.animals.index')->with('success', 'Animal cadastrado com sucesso!');
     }
@@ -87,4 +78,16 @@ class AnimalController extends Controller
 
         return redirect()->route('admin.animals.index')->with('success', 'Animal deletado com sucesso!');
     }
+
+    public function toggleStatus(Animal $animal)
+    {
+        $animal->ativo = !$animal->ativo;
+        $animal->save();
+
+        return response()->json([
+            'success' => true,
+            'status' => $animal->ativo ? 'Ativo' : 'Inativo',
+        ]);
+    }
+
 }

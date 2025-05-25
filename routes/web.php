@@ -62,6 +62,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('{animal}', [AnimalController::class, 'update'])->name('update');
 
             Route::delete('{animal}', [AnimalController::class, 'destroy'])->name('destroy');
+            Route::patch('{animal}/toggle-status', [AnimalController::class, 'toggleStatus'])->name('admin.animals.toggleStatus');
+
 
             Route::prefix('forms')->name('forms.')->group(function () {
                 Route::get('/', [FormsController::class, 'index'])->name('index');

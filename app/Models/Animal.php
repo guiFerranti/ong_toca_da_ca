@@ -22,6 +22,8 @@ class Animal extends Model
         'img_perfil',
         'testado_fiv_felv',
         'is_castrado',
+        'small_description',
+        'description',
     ];
 
 
