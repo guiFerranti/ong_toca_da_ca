@@ -92,5 +92,47 @@
             </a>
 
         </div>
+
+        <div class="bg-[#d3a0ed] py-12">
+            <div class="container mx-auto px-4">
+                <div class="animais-carrossel swiper">
+                    <div class="swiper-wrapper">
+                        @foreach($animais as $animal)
+                            <div class="swiper-slide">
+                                <div class="bg-[#dcaefb] rounded-xl shadow-lg p-4 h-full mx-2">
+                                    <div class="h-40 overflow-hidden rounded-lg mb-3">
+                                        <img
+                                            src="{{ asset('storage/animals/' . basename($animal->img_perfil)) }}"
+                                            alt="{{ $animal->nome }}"
+                                            class="w-full h-full object-cover"
+                                        >
+                                    </div>
+                                    <h3 class="font-bold text-gray-800 text-lg">{{ $animal->nome }}</h3>
+                                    <p class="text-gray-600 text-sm">{{ $animal->idade }} anos</p>
+                                    <p class="text-gray-700 text-sm mt-2 line-clamp-2">{{ $animal->small_description }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="swiper-slide">
+                            <a href="{{ route('adocao.show') }}" class="block h-full">
+                                <div
+                                    class="bg-[#dcaefb] rounded-xl shadow-lg p-4 h-full mx-2 flex flex-col items-center justify-center">
+                                    <svg class="w-12 h-12 text-gray-700 mb-3" fill="none" stroke="currentColor"
+                                         viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
+                                    </svg>
+                                    <span class="font-semibold text-gray-800">Ver Todos</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-button-next !text-gray-700"></div>
+                    <div class="swiper-button-prev !text-gray-700"></div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
