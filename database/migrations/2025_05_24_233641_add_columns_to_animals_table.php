@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('animals', function (Blueprint $table) {
-            $table->tinyInteger('is_active')->nullable()->default(0)->after('id');
+            $table->tinyInteger('is_castrado')->default(0);
         });
     }
 

@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold mb-4">Cadastrar Animal</h1>
 
         <form action="{{ route('admin.animals.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
-        @csrf
+            @csrf
 
             <div class="mb-4">
                 <label class="block text-gray-700 mb-2">Imagem de Perfil</label>
@@ -23,17 +23,17 @@
 
             <div>
                 <label class="block">Nome</label>
-                <input type="text" name="nome" class="w-full border px-4 py-2 rounded" />
+                <input type="text" name="nome" class="w-full border px-4 py-2 rounded"/>
             </div>
 
             <div>
                 <label class="block">Data de Nascimento</label>
-                <input type="date" name="data_nascimento" class="w-full border px-4 py-2 rounded" />
+                <input type="date" name="data_nascimento" class="w-full border px-4 py-2 rounded"/>
             </div>
 
             <div>
                 <label class="block">Idade</label>
-                <input type="text" name="idade" class="w-full border px-4 py-2 rounded" />
+                <input type="text" name="idade" class="w-full border px-4 py-2 rounded"/>
             </div>
 
             <div class="mb-4">
@@ -43,11 +43,6 @@
                     <option value="Masculino" {{ old('sexo') === 'Masculino' ? 'selected' : '' }}>Masculino</option>
                     <option value="Feminino" {{ old('sexo') === 'Feminino' ? 'selected' : '' }}>Feminino</option>
                 </select>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 mb-2">Imagens adicionais</label>
-                <input type="file" name="imagens[]" multiple class="block w-full border p-2 bg-white">
             </div>
 
             <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded">Salvar</button>

@@ -12,7 +12,18 @@ class Animal extends Model
     use SoftDeletes;
 
     protected $table = 'animals';
-    protected $fillable = ['tipo', 'nome', 'data_nascimento', 'idade', 'sexo'];
+    protected $fillable = [
+        'is_active',
+        'tipo',
+        'nome',
+        'data_nascimento',
+        'idade',
+        'sexo',
+        'img_perfil',
+        'testado_fiv_felv',
+        'is_castrado',
+    ];
+
 
     public function imagens()
     {

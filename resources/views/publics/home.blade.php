@@ -3,7 +3,7 @@
 @section('content')
     <div class="h-full w-full flex flex-col items-center">
         <div class="flex gap-10 w-2/3 py-8 items-center justify-center">
-            <a href="{{ route('adocao.show') }}">
+            <a href="{{ route('adocao.@show') }}">
                 <div
                     class="flex flex-col h-[150px] w-[150px] bg-[#0c9d44] rounded-md p-6 items-center justify-center">
                     <svg height="60px" xmlns="http://www.w3.org/2000/svg"
