@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FormsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AccountabilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\ImgurTestController;
+
+Route::get('/imgur-test', [ImgurTestController::class, 'showForm']);
+Route::post('/imgur-upload', [ImgurTestController::class, 'upload'])->name('imgur.upload');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -73,6 +78,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/{type}/{id}', [FormsController::class, 'show'])->name('show');
                 Route::put('/{type}/{id}/status', [FormsController::class, 'updateStatus'])->name('update-status');
             });
+
+
+        });
+        Route::prefix('contas')->name('accountability.')->group(function () {
+            Route::get('/', [AccountabilityController::class, 'index'])->name('index');
+            Route::get('/create', [AccountabilityController::class, 'create'])->name('create');
+            Route::post('/', [AccountabilityController::class, 'store'])->name('store');
+            Route::get('/{accountability}/edit', [AccountabilityController::class, 'edit'])->name('edit');
+            Route::put('/{accountability}', [AccountabilityController::class, 'update'])->name('update');
         });
     });
 });

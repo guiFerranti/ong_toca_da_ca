@@ -32,8 +32,7 @@
         ],
         [    'label' => 'Prestação de contas',
             'icon'  => asset(''),
-            //'route' => route('admin.contas.index'),
-            'route' => '',
+            'route' => route('admin.accountability.index'),
         ],
         [
             'label' => 'Administradores',
