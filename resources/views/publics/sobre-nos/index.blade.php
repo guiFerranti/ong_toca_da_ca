@@ -76,7 +76,7 @@
                    class="bg-[#a516e6] hover:bg-[#8a12c2] text-white px-8 py-3 rounded-full transition-colors font-semibold">
                     Quero Adotar
                 </a>
-                <a href="{{ route('apadrinhamento.show') }}"
+                <a href="{{ route('adocao.show') }}"
                    class="bg-[#0c9d44] hover:bg-[#0b843a] text-white px-8 py-3 rounded-full transition-colors font-semibold">
                     Quero Apadrinhar
                 </a>
