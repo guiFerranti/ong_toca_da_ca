@@ -18,14 +18,6 @@ use App\Http\Controllers\Admin\AccountabilityController;
 |
 */
 
-use App\Http\Controllers\ImgurTestController;
-
-Route::get('/imgur-test', [ImgurTestController::class, 'showForm']);
-Route::post('/imgur-upload', [ImgurTestController::class, 'upload'])->name('imgur.upload');
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', [\App\Http\Controllers\Publics\HomeController::class, 'show'])->name('home.show');
 
 
