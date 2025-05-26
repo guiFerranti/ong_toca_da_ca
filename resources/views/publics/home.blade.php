@@ -59,7 +59,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('adocao.show') }}">
+            <a href="{{ route('public.accountability.index') }}">
                 <div
                     class="h-full flex flex-col aspect-square w-full sm:w-[150px] bg-[#0c9d44] rounded-md p-4 sm:p-6 items-center justify-center text-center">
                     <svg height="60px"
