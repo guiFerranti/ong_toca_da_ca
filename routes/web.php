@@ -4,8 +4,12 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AnimalController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FormsController;
+use App\Http\Controllers\Publics\AdocaoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AccountabilityController;
+use App\Http\Controllers\Publics\AccountabilityController as AccountabilityControllerPublic;
+
+;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +25,26 @@ use App\Http\Controllers\Admin\AccountabilityController;
 Route::get('/', [\App\Http\Controllers\Publics\HomeController::class, 'show'])->name('home.show');
 
 
-Route::get('/adocao/cadastro/{id_pet}', [\App\Http\Controllers\Publics\AdocaoController::class, 'create'])->name('adocao.create');
-Route::post('/adocao', [\App\Http\Controllers\Publics\AdocaoController::class, 'store'])->name('adocao.store');
+Route::get('/adocao/cadastro/{id_pet}', [AdocaoController::class, 'create'])->name('adocao.create');
+Route::post('/adocao', [AdocaoController::class, 'store'])->name('adocao.store');
 
-Route::get('/adocao', [\App\Http\Controllers\Publics\AdocaoController::class, 'show'])->name('adocao.show');
+Route::get('/adocao', [AdocaoController::class, 'show'])->name('adocao.show');
 
-Route::get('/animais/gatos', [\App\Http\Controllers\Publics\AdocaoController::class, 'showGatos'])->name('adocao.gatos.show');
-Route::get('/animais/cachorros', [\App\Http\Controllers\Publics\AdocaoController::class, 'showDogs'])->name('adocao.cachorros.show');
-Route::get('/animal/{id}', [\App\Http\Controllers\Publics\AdocaoController::class, 'index'])->name('adocao.index');
+Route::prefix('animais')->name('adocao.')->group(function () {
+    Route::get('/gatos', [AdocaoController::class, 'showGatos'])->name('gatos.show');
+    Route::get('/cachorros', [AdocaoController::class, 'showDogs'])->name('cachorros.show');
+});
+
+Route::get('/animal/{id}', [AdocaoController::class, 'index'])->name('adocao.index');
+
+Route::name('public.accountability.')->group(function () {
+    Route::get('/transparencia', [AccountabilityControllerPublic::class, 'index'])
+        ->name('index');
+
+    Route::get('/transparencia/{entry}', [AccountabilityControllerPublic::class, 'show'])
+        ->name('show');
+});
+
 
 Route::get('/apadrinhamento/cadastro/{id_pet}', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'create'])->name('apadrinhamento.create');
 Route::post('/apadrinhamento', [\App\Http\Controllers\Publics\ApadrinhamentoController::class, 'store'])->name('apadrinhamento.store');

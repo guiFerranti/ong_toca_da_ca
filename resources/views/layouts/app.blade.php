@@ -11,8 +11,10 @@
 <header class="relative bg-[#a516e6] text-white shadow-md">
     <div class="flex justify-center lg:justify-between mx-auto px-4 md:px-6 lg:px-12 lg:max-w-[80%] py-8 relative">
         <div class="flex flex-col md:flex-row items-center gap-8">
-            <img src="{{ asset('imgs/logo-no-bg.png') }}" alt="Admin Logo"
-                 class="w-24 md:w-32 h-auto transition-transform hover:scale-105">
+            <a href="{{ route('home.show') }}">
+                <img src="{{ asset('imgs/logo-no-bg.png') }}" alt="Admin Logo"
+                     class="w-24 md:w-32 h-auto transition-transform hover:scale-105">
+            </a>
 
             <div class="text-center md:text-left space-y-4">
                 <h1 class="text-3xl md:text-4xl font-bold leading-tight">
