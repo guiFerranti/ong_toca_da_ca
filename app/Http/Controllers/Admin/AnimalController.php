@@ -76,7 +76,7 @@ class AnimalController extends Controller
         $validated['is_castrado'] = $request->has('is_castrado');
 
         if ($request->hasFile('img_perfil')) {
-            $path = $request->file('img_perfil')->store('animais/perfis', 'public');
+            $path = $request->file('img_perfil')->store('animals', 'public');
             $validated['img_perfil'] = $path;
         }
 

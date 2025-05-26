@@ -16,7 +16,7 @@
                     <div class="flex-shrink-0">
                         @if($animal->img_perfil)
                             <div class="relative group">
-                                <img src="{{ asset('storage/animals/' . basename($animal->img_perfil)) }}"
+                                <img src="{{ asset('storage/' . $animal->img_perfil) }}"
                                      alt="Imagem atual"
                                      class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-blue-100 shadow-md">
                                 <div
