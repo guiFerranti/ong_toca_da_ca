@@ -1,43 +1,88 @@
 @extends('layouts.app-admin')
 
 @section('content')
-    <div class="container">
-        <h1>Editar Registro</h1>
+    <div class="container mx-auto p-4 max-w-4xl">
+        <h1 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">Editar Registro</h1>
 
         <form method="POST" action="{{ route('admin.accountability.update', $accountability->id) }}"
-              enctype="multipart/form-data">
+              enctype="multipart/form-data"
+              class="bg-white rounded-lg shadow-md p-4 md:p-6 space-y-4 md:space-y-6">
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
-                <label for="payment_date" class="form-label">Data do Pagamento</label>
-                <input type="date" class="form-control" id="payment_date" name="payment_date"
-                       value="{{ $accountability->payment_date->format('Y-m-d') }}" required>
+            <div class="space-y-4 md:space-y-6">
+                <div>
+                    <label for="payment_date" class="block text-gray-700 font-medium mb-1 md:mb-2">Data do Pagamento
+                        *</label>
+                    <input type="date" id="payment_date" name="payment_date"
+                           value="{{ old('payment_date', $accountability->payment_date->format('Y-m-d')) }}"
+                           class="w-full text-sm md:text-base border border-gray-300 rounded px-3 py-2 md:px-4 md:py-2 focus:outline-none focus:ring-1 md:focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                           required>
+                    @error('payment_date')
+                    <p class="text-red-500 text-xs md:text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="amount" class="block text-gray-700 font-medium mb-1 md:mb-2">Valor *</label>
+                    <input type="number" step="0.01" id="amount" name="amount"
+                           value="{{ old('amount', $accountability->amount) }}"
+                           class="w-full text-sm md:text-base border border-gray-300 rounded px-3 py-2 md:px-4 md:py-2 focus:outline-none focus:ring-1 md:focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                           required>
+                    @error('amount')
+                    <p class="text-red-500 text-xs md:text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="description" class="block text-gray-700 font-medium mb-1 md:mb-2">Descrição *</label>
+                    <textarea id="description" name="description" rows="3"
+                              class="w-full text-sm md:text-base border border-gray-300 rounded px-3 py-2 md:px-4 md:py-2 focus:outline-none focus:ring-1 md:focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              required>{{ old('description', $accountability->description) }}</textarea>
+                    @error('description')
+                    <p class="text-red-500 text-xs md:text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="image" class="block text-gray-700 font-medium mb-1 md:mb-2">Novo Comprovante</label>
+                    <div class="flex flex-col gap-2">
+                        <input type="file" id="image" name="image"
+                               class="block w-full text-sm text-gray-500
+                                   file:mr-2 file:py-1 file:px-3 md:file:py-2 md:file:px-4
+                                   file:rounded file:border-0
+                                   file:text-xs md:file:text-sm file:font-medium
+                                   file:bg-blue-50 file:text-blue-700
+                                   hover:file:bg-blue-100">
+                        @error('image')
+                        <p class="text-red-500 text-xs md:text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                        <p class="text-gray-500 text-xs md:text-sm mt-1">
+                            Comprovante atual:
+                            @if($accountability->image)
+                                <a href="{{ asset('storage/' . $accountability->image) }}"
+                                   target="_blank"
+                                   class="text-blue-600 hover:underline">
+                                    Visualizar
+                                </a>
+                            @else
+                                Nenhum arquivo enviado
+                            @endif
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="amount" class="form-label">Valor</label>
-                <input type="number" step="0.01" class="form-control" id="amount" name="amount"
-                       value="{{ $accountability->amount }}" required>
+            <div class="flex justify-end pt-4 md:pt-6 gap-3">
+                <a href="{{ route('admin.accountability.index') }}"
+                   class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 md:px-6 rounded shadow-sm transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 text-sm md:text-base">
+                    Cancelar
+                </a>
+                <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 md:px-6 rounded shadow-sm transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-sm md:text-base">
+                    Atualizar
+                </button>
             </div>
-
-            <div class="mb-3">
-                <label for="description" class="form-label">Descrição</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required>
-                {{ $accountability->description }}
-            </textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="image" class="form-label">Novo Comprovante (opcional)</label>
-                <input type="file" class="form-control" id="image" name="image">
-                <small class="form-text text-muted">
-                    Deixe em branco para manter o comprovante atual
-                </small>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Atualizar</button>
-            <a href="{{ route('admin.accountability.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 @endsection

@@ -11,7 +11,7 @@ class AccountabilityController extends Controller
 {
     public function index()
     {
-        $entries = AccountabilityEntry::with('user')->latest()->get();
+        $entries = AccountabilityEntry::with('user')->latest()->paginate(15);
         return view('admin.accountability.index', compact('entries'));
     }
 
@@ -27,7 +27,7 @@ class AccountabilityController extends Controller
             'amount' => 'required|numeric|min:0',
             'description' => 'required|string|max:500',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120'
-        ]);
+        ], ['*.required' => 'Campo obrigatório']);
 
         try {
             $data = $request->only(['payment_date', 'amount', 'description']);
@@ -53,7 +53,7 @@ class AccountabilityController extends Controller
             'amount' => 'required|numeric|min:0',
             'description' => 'required|string|max:500',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120'
-        ]);
+        ], ['*.required' => 'Campo obrigatório']);
 
         try {
             $imagePath = $request->file('image')->store('temp');
