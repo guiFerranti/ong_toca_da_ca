@@ -9,9 +9,12 @@
 
             <input type="hidden" name="id_pet" value="{{ $id_pet }}">
 
+            @foreach($errors->all() as $error)
+                {{$error}}
+            @endforeach
+
             <div class="bg-gray-50 p-4 sm:p-6 rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Nome Completo -->
                     <div>
                         <label class="block text-gray-700 mb-1">Nome completo</label>
                         <input type="text" name="nome"
@@ -22,7 +25,6 @@
                         @enderror
                     </div>
 
-                    <!-- Data de Nascimento -->
                     <div>
                         <label class="block text-gray-700 mb-1">Data de nascimento</label>
                         <input type="date" name="nascimento"
@@ -33,7 +35,6 @@
                         @enderror
                     </div>
 
-                    <!-- CPF -->
                     <div>
                         <label class="block text-gray-700 mb-1">CPF</label>
                         <input type="text" name="cpf"
@@ -44,7 +45,6 @@
                         @enderror
                     </div>
 
-                    <!-- Telefone -->
                     <div>
                         <label class="block text-gray-700 mb-1">Telefone</label>
                         <input type="text" name="telefone"
@@ -55,7 +55,6 @@
                         @enderror
                     </div>
 
-                    <!-- Email -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">E-mail</label>
                         <input type="email" name="email"
@@ -66,7 +65,6 @@
                         @enderror
                     </div>
 
-                    <!-- Endereço -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">Endereço completo</label>
                         <input type="text" name="endereco"
@@ -82,7 +80,6 @@
             <div class="bg-gray-50 p-4 sm:p-6 rounded-lg">
                 <h2 class="text-xl font-semibold text-gray-700 mb-4">Sobre o Apadrinhamento</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Tipo de Pet -->
                     <div>
                         <label class="block text-gray-700 mb-1">Tipo de pet</label>
                         <select name="tipo_pet"
@@ -96,7 +93,6 @@
                         @enderror
                     </div>
 
-                    <!-- Nome do Pet (Opcional) -->
                     <div>
                         <label class="block text-gray-700 mb-1">Nome do pet (opcional)</label>
                         <input type="text" name="nome_pet"
@@ -107,7 +103,6 @@
                         @enderror
                     </div>
 
-                    <!-- Tipo de Apadrinhamento -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">Tipo de apadrinhamento</label>
                         <input type="text" name="tipo_apadrinhamento"
@@ -118,7 +113,6 @@
                         @enderror
                     </div>
 
-                    <!-- Contribuição -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">Valor ou tipo de contribuição</label>
                         <input type="text" name="contribuicao"
@@ -129,7 +123,6 @@
                         @enderror
                     </div>
 
-                    <!-- Frequência -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">Frequência</label>
                         <select name="frequencia"
@@ -147,7 +140,6 @@
                         @enderror
                     </div>
 
-                    <!-- Visita Regular -->
                     <div>
                         <label class="block text-gray-700 mb-1">Disposto a visitar o pet?</label>
                         <select name="visita_regular"
@@ -161,7 +153,6 @@
                         @enderror
                     </div>
 
-                    <!-- Receber Atualizações -->
                     <div>
                         <label class="block text-gray-700 mb-1">Deseja receber atualizações?</label>
                         <select name="receber_atualizacoes"
@@ -175,7 +166,6 @@
                         @enderror
                     </div>
 
-                    <!-- Aceita Termos -->
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-1">Aceita o termo de compromisso?</label>
                         <select name="aceita_termos"

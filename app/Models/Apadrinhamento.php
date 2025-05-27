@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apadrinhamento extends Model
 {
+    protected $table = 'apadrinhamentos';
     protected $fillable = [
         'nome',
         'nascimento',

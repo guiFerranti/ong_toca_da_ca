@@ -51,7 +51,6 @@ class AnimalController extends Controller
             ->with('success', 'Animal atualizado com sucesso!');
     }
 
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -82,7 +81,7 @@ class AnimalController extends Controller
 
         Animal::create($validated);
 
-        return redirect()->route('admin.animals.index')->with('success', 'Animal cadastrado com sucesso.');
+        return redirect()->route('publics.adocao.show')->with('success', 'Animal cadastrado com sucesso.');
     }
 
 

@@ -1,6 +1,19 @@
 import './bootstrap';
 import Swiper from 'swiper';
 import 'swiper/css';
+import Swal from 'sweetalert2';
+
+window.Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     new Swiper('.animais-carrossel', {

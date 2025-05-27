@@ -15,7 +15,7 @@ class AdocaoController extends Controller
             'id_pet' => 'required|integer|exists:animals,id',
 
             'nome' => 'required|string|max:255',
-            'idade' => 'required|integer',
+            'idade' => 'required|integer|max:100',
             'profissao' => 'required|string|max:255',
             'telefone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
@@ -42,13 +42,13 @@ class AdocaoController extends Controller
             'ja_abandonou' => 'required|boolean',
             'motivo_abandono' => 'required|string|max:255',
             'aceita_termo' => 'required|boolean',
-        ], ['*.required' => 'Campo obrigatório']);
+        ], ['*.required' => 'Campo obrigatório', '*.max' => 'Valor inválido']);
 
 
         Adocao::create($data);
 
-        return redirect()->route('adocao.create', ['id_pet' => $data['id_pet']])
-            ->with('success', 'Formulário enviado com sucesso!');
+        return redirect()->route('adocao.show', ['id_pet' => $data['id_pet']])
+            ->with('success', 'Formulário de adoção enviado com sucesso!');
     }
 
     public function create($id_pet)

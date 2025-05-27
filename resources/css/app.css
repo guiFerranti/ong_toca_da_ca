@@ -1,10 +1,11 @@
+@import 'swiper/css';
+/*@import 'swiper/css/navigation';*/
+@import 'swiper/css/pagination';
+@import 'sweetalert2/dist/sweetalert2.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-
 
 .swiper {
     overflow: visible !important;
@@ -36,4 +37,17 @@
 .swiper-button-prev::after {
     font-size: 24px !important;
     font-weight: bold;
+}
+
+
+.swal2-popup.swal2-toast {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swal2-icon-success {
+    color: #28a745 !important;
+}
+
+.swal2-icon-error {
+    color: #dc3545 !important;
 }

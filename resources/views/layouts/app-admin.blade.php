@@ -85,4 +85,21 @@
 @vite('resources/js/app.js')
 @yield('scripts')
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @if(session('success'))
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session('success') }}'
+        });
+        @endif
+
+        @if(session('error'))
+        Toast.fire({
+            icon: 'error',
+            title: '{{ session('error') }}'
+        });
+        @endif
+    });
+</script>
 </html>

@@ -31,7 +31,7 @@ class ApadrinhamentoController extends Controller
 
         Apadrinhamento::create($validated);
 
-        return redirect()->route('home.show')->with('success', 'Apadrinhamento registrado com sucesso.');
+        return redirect()->route('adocao.show')->with('success', 'Formulário de apadrinhamento registrado com sucesso.');
     }
 
     public function create($id_pet)
