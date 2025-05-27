@@ -31,14 +31,26 @@
                                 {{ $animal->is_active ? 'Disponível' : 'Adotado' }}
                             </div>
                         </div>
+                        @php
+                            $nascimento = \Carbon\Carbon::parse($animal->data_nascimento);
+                            $hoje = \Carbon\Carbon::now();
+                            $diff = $nascimento->diff($hoje);
 
+                            $anos = $diff->y;
+                            $meses = $diff->m;
+                        @endphp
+                        
                         <div class="p-4 md:p-6 flex flex-col flex-grow">
                             <div class="mb-4">
                                 <h2 class="text-2xl font-bold text-gray-900 mb-1">{{ $animal->nome }}</h2>
                                 <div class="flex items-center justify-between">
                                     <p class="text-sm text-gray-600">
                                         {{ $animal->tipo }} •
-                                        <span class="text-gray-500">{{ $animal->idade }} anos</span>
+                                        <span class="text-gray-500">@if ($anos >= 1)
+                                                {{ $anos }} {{ $anos === 1 ? 'ano' : 'anos' }}
+                                            @else
+                                                {{ $meses }} {{ $meses === 1 ? 'mês' : 'meses' }}
+                                            @endif</span>
                                     </p>
                                     <span class="text-sm font-medium text-gray-500">
                     {{ $animal->sexo === 'Feminino' ? '♀' : '♂' }}
