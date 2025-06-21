@@ -16,14 +16,14 @@
                 <div class="bg-white p-6 rounded-2xl shadow-lg border border-[#e9d8fd]">
                     <div class="flex flex-col md:flex-row items-center gap-6">
                         <div class="flex-shrink-0">
-                            <img src="{{ asset('imgs/qr-code.png') }}"
+                            <img src="{{ asset('storage/' . get_content('pix_qr_code', 'imgs/qr-code.png')) }}"
                                  alt="QR Code para doação"
                                  class="w-48 h-48 rounded-lg">
                         </div>
                         <div class="text-center md:text-left">
                             <h3 class="text-xl font-bold mb-2">Doação via PIX</h3>
                             <p class="mb-4 text-gray-600">Escaneie o QR Code ou</p>
-                            <a href="https://apoia.se/tocadaca" target="_blank"
+                            <a href="{{ get_content('vakinha_link', 'https://apoia.se/tocadaca') }}" target="_blank"
                                class="inline-block bg-[#0c9d44] hover:bg-[#0b843a] text-white
                                   px-6 py-2 rounded-full transition-colors">
                                 Doe pela vakinha
@@ -51,10 +51,6 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <div class="w-2 h-2 bg-[#b74bff] rounded-full"></div>
-                            Cuidados veterinários
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-2 h-2 bg-[#b74bff] rounded-full"></div>
                             Melhorias no abrigo
                         </li>
                         <li class="flex items-center gap-2">
@@ -66,18 +62,22 @@
             </div>
 
             <div class="order-1 md:order-2">
-                <div class="relative rounded-2xl overflow-hidden shadow-lg">
-                    <img src="{{ asset('imgs/brecho.jpg') }}"
-                         alt="Brechó Solidário"
-                         class="w-full h-auto object-cover transform hover:scale-105 transition-transform">
+                <a class="cursor-pointer" target="_blank"
+                   href="{{ get_content('instagram_link', 'https://www.instagram.com/toca_da_ca/') }}">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg">
+                        <img src="{{ asset('imgs/brecho.jpg') }}"
+                             alt="Brechó Solidário"
+                             class="w-full h-auto object-cover transform hover:scale-105 transition-transform">
 
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 flex items-end p-6">
-                        <div class="text-white">
-                            <p class="text-lg font-semibold">Como ajudar?</p>
-                            <p class="text-sm">Doe roupas em bom estado ou venha fazer compras cheias de propósito!</p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 flex items-end p-6">
+                            <div class="text-white">
+                                <p class="text-lg font-semibold">Como ajudar?</p>
+                                <p class="text-sm">Doe roupas em bom estado ou venha fazer compras cheias de
+                                    propósito!</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <div class="mt-6 bg-[#f8f5ff] p-6 rounded-2xl">
                     <div class="flex items-center gap-4">

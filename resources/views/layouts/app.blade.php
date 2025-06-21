@@ -73,7 +73,7 @@
         </div>
 
         <a
-            href="https://www.instagram.com/toca_da_ca/"
+            href="{{ get_content('instagram_link', 'https://www.instagram.com/toca_da_ca/') }}"
             target="_blank"
             class="order-2 md:order-none flex items-center gap-3 group hover:opacity-80 transition-opacity"
         >
