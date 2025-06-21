@@ -49,9 +49,25 @@
                             </select>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{ route('admin.animals.forms.show', [$type, $form->id]) }}"
-                               class="text-blue-600 hover:text-blue-900">Ver detalhes</a>
+                            <div class="flex items-center gap-2 h-full justify-center">
+                                <a href="{{ route('admin.animals.forms.show', [$type, $form->id]) }}"
+                                   class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition-colors h-10 flex items-center justify-center">
+                                    Ver detalhes
+                                </a>
+
+                                <form action="{{ route('admin.animals.forms.destroy', [$type, $form->id]) }}"
+                                      method="POST" class="h-10">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors h-full w-full flex items-center justify-center"
+                                            onclick="return confirm('Tem certeza que deseja excluir este formulário?')">
+                                        Excluir
+                                    </button>
+                                </form>
+                            </div>
                         </td>
+
                     </tr>
                 @endforeach
                 </tbody>

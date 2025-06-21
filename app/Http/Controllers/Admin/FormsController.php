@@ -42,4 +42,22 @@ class FormsController extends Controller
 
         return response()->json(['success' => true, 'new_status' => $request->status]);
     }
+
+    public function destroy($type, $id)
+    {
+        try {
+            $form = $type === 'adocao'
+                ? Adocao::findOrFail($id)
+                : Apadrinhamento::findOrFail($id);
+
+            $form->delete();
+
+            return redirect()
+                ->route('admin.animals.forms.index', ['type' => $type])
+                ->with('success', 'Formulário movido para a lixeira com sucesso!');
+        } catch (\Exception $e) {
+            return back()
+                ->with('error', 'Erro ao excluir formulário: ' . $e->getMessage());
+        }
+    }
 }

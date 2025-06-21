@@ -93,6 +93,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/', [FormsController::class, 'index'])->name('index');
                 Route::get('/{type}/{id}', [FormsController::class, 'show'])->name('show');
                 Route::put('/{type}/{id}/status', [FormsController::class, 'updateStatus'])->name('update-status');
+                Route::delete('/{type}/{id}', [FormsController::class, 'destroy'])
+                    ->name('destroy');
             });
 
 
