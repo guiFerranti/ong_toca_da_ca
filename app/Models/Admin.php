@@ -18,4 +18,9 @@ class Admin extends Authenticatable
             'email',
             'password',
         ];
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
 }

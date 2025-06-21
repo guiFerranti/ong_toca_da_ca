@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Publics;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use App\Models\Adocao;
 
@@ -45,7 +46,16 @@ class AdocaoController extends Controller
         ], ['*.required' => 'Campo obrigatório', '*.max' => 'Valor inválido']);
 
 
-        Adocao::create($data);
+        $adocao = Adocao::create($data);
+
+        NotificationService::create(
+            'adocao',
+            'Novo formulário de adoção enviado por ' . $data['nome'],
+            $data['id_pet'],
+            'animal',
+            auth()->id(),
+            $adocao->id
+        );
 
         return redirect()->route('adocao.show', ['id_pet' => $data['id_pet']])
             ->with('success', 'Formulário de adoção enviado com sucesso!');

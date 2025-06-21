@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Publics;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animal;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use App\Models\Apadrinhamento;
 
@@ -29,7 +30,17 @@ class ApadrinhamentoController extends Controller
             'id_pet' => 'required|exists:animals,id',
         ], ['*.required' => 'Campo obrigatório']);
 
-        Apadrinhamento::create($validated);
+        $apadrinhamento = Apadrinhamento::create($validated);
+
+        NotificationService::create(
+            'apadrinhamento',
+            'Novo formulário de apadrinhamento enviado por ' . $validated['nome'],
+            $validated['id_pet'],
+            'animal',
+            auth()->id(),
+            $apadrinhamento->id
+        );
+
 
         return redirect()->route('adocao.show')->with('success', 'Formulário de apadrinhamento registrado com sucesso.');
     }

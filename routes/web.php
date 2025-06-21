@@ -96,9 +96,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::delete('/{type}/{id}', [FormsController::class, 'destroy'])
                     ->name('destroy');
             });
-
-
         });
+
+        Route::get('/notifications', [\App\Http\Controllers\Admin\NotificationController::class, 'index'])->name('notifications.index');
+        Route::post('/notifications/{notification}/read', [\App\Http\Controllers\Admin\NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+        Route::post('/notifications/mark-all-read', [\App\Http\Controllers\Admin\NotificationController::class, 'markAllAsRead'])->name('notifications.markAllRead');
+
         Route::prefix('contas')->name('accountability.')->group(function () {
             Route::get('/', [AccountabilityController::class, 'index'])->name('index');
             Route::get('/create', [AccountabilityController::class, 'create'])->name('create');
