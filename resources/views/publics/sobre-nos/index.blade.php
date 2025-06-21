@@ -12,8 +12,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
-                        <p>Temos uma dedicação no cuidado destes animais há muitos anos. Desde 2010 nossa assistência se
-                            intensificou e abrimos nossa casa para acolher e cuidar de animais de rua.</p>
+                        <p>Cuidar sempre foi natural pra nós. Desde 2010, já resgatávamos animais sem pensar duas vezes.
+                            Quando o Josiel adoeceu e precisou parar de trabalhar, acolher um cãozinho deu novo
+                            propósito — e logo vieram muitos outros.</p>
                     </div>
 
                     <div class="flex items-start gap-4">
@@ -21,19 +22,18 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 4v1m6 11h2m-6 0h-2m4-10a4 4 0 11-8 0 4 4 0 018 0zM4 20a2 2 0 012-2h12a2 2 0 012 2v1H4v-1z"/>
                         </svg>
-                        <p>São muitos cães e gatos abandonados que chegam até nós, muitas vezes doentes. Hoje temos um
-                            foco especial em cuidar de gatos com esporotricose, casos que geralmente indicam a eutanásia
-                            e nós tentamos dar uma chance!</p>
+                        <p>Na enchente de 2023, mesmo no caos, os animais continuaram chegando. E a gente nunca soube
+                            dizer "não". Assim, entre amor e necessidade, nasceu a Toca da Cá.</p>
                     </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6 mt-12">
                     <div class="bg-white/10 p-6 rounded-xl">
-                        <p class="text-3xl font-bold mb-2">13+</p>
+                        <p class="text-3xl font-bold mb-2">2+</p>
                         <p class="text-sm uppercase tracking-wide">Anos de dedicação</p>
                     </div>
                     <div class="bg-white/10 p-6 rounded-xl">
-                        <p class="text-3xl font-bold mb-2">2K+</p>
+                        <p class="text-3xl font-bold mb-2">500+</p>
                         <p class="text-sm uppercase tracking-wide">Animais resgatados</p>
                     </div>
                 </div>

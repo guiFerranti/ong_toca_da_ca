@@ -97,20 +97,20 @@
             <div class="container mx-auto px-4 text-center">
                 <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
                     <div class="p-4">
-                        <p class="text-3xl font-bold mb-2">1K+</p>
+                        <p class="text-3xl font-bold mb-2">500+</p>
                         <p class="text-sm">Animais resgatados</p>
                     </div>
                     <div class="p-4">
-                        <p class="text-3xl font-bold mb-2">85%</p>
-                        <p class="text-sm">Taxa de adoção</p>
+                        <p class="text-3xl font-bold mb-2">3</p>
+                        <p class="text-sm">Animais por mês</p>
                     </div>
                     <div class="p-4">
-                        <p class="text-3xl font-bold mb-2">15+</p>
+                        <p class="text-3xl font-bold mb-2">5+</p>
                         <p class="text-sm">Parcerias ativas</p>
                     </div>
                     <div class="p-4">
-                        <p class="text-3xl font-bold mb-2">24/7</p>
-                        <p class="text-sm">Atendimento veterinário</p>
+                        <p class="text-3xl font-bold mb-2">3x</p>
+                        <p class="text-sm">Por mês animais ao veterinário</p>
                     </div>
                 </div>
             </div>

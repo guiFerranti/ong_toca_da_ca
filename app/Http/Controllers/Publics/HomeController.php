@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $animais = Animal::where('is_active', true)
             ->orderBy('created_at', 'desc')
-            ->take(15)
+            //->take(15)
             ->get();
 
         return view('publics.home', compact('animais'));
