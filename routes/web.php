@@ -99,6 +99,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('contents', \App\Http\Controllers\Admin\ManageableContentController::class)
             ->except(['create', 'store', 'destroy', 'show'])
-            ->names('admin.contents');
+            ->names('contents');
     });
 });

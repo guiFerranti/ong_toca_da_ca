@@ -40,6 +40,11 @@
             //'route' => route('admin.admins.index'),
             'route' => '',
         ],
+        [
+            'label' => 'Conteúdo gerenciável',
+            'icon'  => asset(''),
+            'route' => route('admin.contents.index'),
+        ],
     ];
 @endphp
 <body class="bg-gray-100">
