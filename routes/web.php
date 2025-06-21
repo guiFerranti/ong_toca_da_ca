@@ -96,5 +96,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/{accountability}/edit', [AccountabilityController::class, 'edit'])->name('edit');
             Route::put('/{accountability}', [AccountabilityController::class, 'update'])->name('update');
         });
+
+        Route::resource('contents', \App\Http\Controllers\Admin\ManageableContentController::class)
+            ->except(['create', 'store', 'destroy', 'show'])
+            ->names('admin.contents');
     });
 });
