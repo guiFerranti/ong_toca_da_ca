@@ -103,6 +103,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/', [AccountabilityController::class, 'store'])->name('store');
             Route::get('/{accountability}/edit', [AccountabilityController::class, 'edit'])->name('edit');
             Route::put('/{accountability}', [AccountabilityController::class, 'update'])->name('update');
+            Route::delete('/{accountability}', [AccountabilityController::class, 'destroy'])
+                ->name('destroy');
         });
 
         Route::resource('contents', \App\Http\Controllers\Admin\ManageableContentController::class)

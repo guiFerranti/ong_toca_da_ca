@@ -79,4 +79,18 @@ class AccountabilityController extends Controller
     {
         return view('admin.accountability.create');
     }
+
+    public function destroy(AccountabilityEntry $accountability)
+    {
+        try {
+            $accountability->delete();
+
+            return redirect()
+                ->route('admin.accountability.index')
+                ->with('success', 'Registro movido para a lixeira com sucesso!');
+        } catch (\Exception $e) {
+            return back()
+                ->with('error', 'Erro ao excluir registro: ' . $e->getMessage());
+        }
+    }
 }
