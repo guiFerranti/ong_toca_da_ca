@@ -64,6 +64,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth:admin'])->group(function () {
 
+        Route::prefix('users')->name('users.')->middleware('auth:admin')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\UserAdminController::class, 'index'])->name('index');
+            Route::get('/create', [\App\Http\Controllers\Admin\UserAdminController::class, 'create'])->name('create');
+            Route::post('/', [\App\Http\Controllers\Admin\UserAdminController::class, 'store'])->name('store');
+            Route::get('/{type}/{id}/edit', [\App\Http\Controllers\Admin\UserAdminController::class, 'edit'])->name('edit');
+            Route::put('/{type}/{id}', [\App\Http\Controllers\Admin\UserAdminController::class, 'update'])->name('update');
+        });
+
         Route::get('/', [AdminController::class, 'index'])->name('index');
 
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -100,5 +108,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('contents', \App\Http\Controllers\Admin\ManageableContentController::class)
             ->except(['create', 'store', 'destroy', 'show'])
             ->names('contents');
+
+
     });
 });

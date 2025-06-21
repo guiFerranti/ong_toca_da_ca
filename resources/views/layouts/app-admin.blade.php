@@ -37,8 +37,7 @@
         [
             'label' => 'Administradores',
             'icon'  => asset(''),
-            //'route' => route('admin.admins.index'),
-            'route' => '',
+            'route' => route('admin.users.index'),
         ],
         [
             'label' => 'Conteúdo gerenciável',
