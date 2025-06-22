@@ -41,11 +41,14 @@
                                     Editar
                                 </a>
 
-                                <form action="{{ route('admin.accountability.destroy', $entry->id) }}" method="POST"
-                                      class="h-10">
+                                <form action="{{ route('admin.accountability.destroy', $entry->id) }}"
+                                      method="POST"
+                                      class="h-10"
+                                      id="delete-entry-{{ $entry->id }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
+                                    <button type="button"
+                                            onclick="confirmDeleteEntry({{ $entry->id }})"
                                             class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors h-full w-full flex items-center justify-center">
                                         Deletar
                                     </button>
@@ -62,4 +65,35 @@
             {{ $entries->links() }}
         </div>
     </div>
+
+    <script>
+        function confirmDeleteEntry(entryId) {
+            Swal.fire({
+                title: 'Confirmar exclusão',
+                text: "Você realmente deseja excluir este registro? Esta ação não pode ser desfeita!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, excluir!',
+                cancelButtonText: 'Cancelar',
+                backdrop: true,
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Processando...',
+                        html: 'Por favor, aguarde enquanto excluímos o registro.',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                            setTimeout(() => {
+                                document.getElementById(`delete-entry-${entryId}`).submit();
+                            }, 500);
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 @endsection

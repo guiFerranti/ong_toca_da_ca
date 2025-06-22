@@ -1,7 +1,7 @@
 @extends('layouts.app-admin')
 
 @section('content')
-    <div class="container mx-auto px-4 py-6">
+    <div class="px-4 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-gray-800">Gerenciamento de Formulários</h1>
 
@@ -56,12 +56,14 @@
                                 </a>
 
                                 <form action="{{ route('admin.animals.forms.destroy', [$type, $form->id]) }}"
-                                      method="POST" class="h-10">
+                                      method="POST"
+                                      class="h-10"
+                                      id="delete-form-{{ $form->id }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
+                                    <button type="button"
                                             class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition-colors h-full w-full flex items-center justify-center"
-                                            onclick="return confirm('Tem certeza que deseja excluir este formulário?')">
+                                            onclick="confirmDeleteForm('{{ $form->id }}', '{{ addslashes($type) }}')">
                                         Excluir
                                     </button>
                                 </form>
@@ -106,5 +108,39 @@
                 console.log('teste');
             });
         });
+
+        function confirmDeleteForm(formId, type) {
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você está prestes a excluir este formulário. Esta ação não pode ser desfeita!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sim, excluir!',
+                cancelButtonText: 'Cancelar',
+                backdrop: `
+        rgba(0,0,0,0.5)
+        url("{{ asset('images/nyan-cat.gif') }}")
+        left top
+        no-repeat
+    `
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Encontra o formulário correto pelo ID e submete
+                    document.getElementById(`delete-form-${formId}`).submit();
+
+                    // Mostra loader enquanto processa
+                    Swal.fire({
+                        title: 'Excluindo...',
+                        html: 'Por favor, aguarde enquanto processamos sua solicitação.',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading()
+                        }
+                    });
+                }
+            });
+        }
     </script>
 @endsection
