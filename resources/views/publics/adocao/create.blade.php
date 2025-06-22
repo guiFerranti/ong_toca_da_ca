@@ -7,7 +7,6 @@
             @csrf
 
             <input type="hidden" name="id_pet" value="{{ $id_pet }}">
-
             <!-- Seção de Informações Pessoais -->
             <div class="bg-gray-50 p-4 sm:p-6 rounded-lg" x-data="{ tipoImovel: '{{ old('tipo_imovel') ?? '' }}' }">
                 <h2 class="text-xl font-semibold text-gray-700 mb-4">Informações Pessoais</h2>
@@ -334,18 +333,20 @@
                         @enderror
                     </div>
 
-                    <div class="space-y-2">
+                    <div class="space-y-2" x-data="{ jaAbandonou: '{{ old('ja_abandonou', '') }}' }">
                         <label class="block text-gray-700">Já teve que doar ou abandonar um animal?</label>
                         <div class="flex gap-4">
                             <label class="inline-flex items-center">
                                 <input type="radio" name="ja_abandonou" value="1"
                                        class="text-blue-600 focus:ring-blue-500"
+                                       x-model="jaAbandonou"
                                        @if (old('ja_abandonou') == '1') checked @endif>
                                 <span class="ml-2">Sim</span>
                             </label>
                             <label class="inline-flex items-center">
                                 <input type="radio" name="ja_abandonou" value="0"
                                        class="text-blue-600 focus:ring-blue-500"
+                                       x-model="jaAbandonou"
                                        @if (old('ja_abandonou') == '0') checked @endif>
                                 <span class="ml-2">Não</span>
                             </label>
@@ -354,7 +355,7 @@
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
 
-                        <div class="mt-2">
+                        <div class="mt-2" x-show="jaAbandonou === '1'" x-transition>
                             <input type="text" name="motivo_abandono" placeholder="Por quê?"
                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('motivo_abandono') border-red-500 @enderror"
                                    value="{{ old('motivo_abandono') }}">

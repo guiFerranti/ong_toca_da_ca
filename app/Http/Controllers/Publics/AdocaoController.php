@@ -35,7 +35,7 @@ class AdocaoController extends Controller
             'ciente_longevidade' => 'required|boolean',
             'cond_financeira' => 'required|boolean',
             'ja_abandonou' => 'required|boolean',
-            'motivo_abandono' => 'required|string|max:255',
+            'motivo_abandono' => 'required_if:ja_abandonou,1|max:255',
             'aceita_termo' => 'required|boolean',
             'permite_pet' => 'required_if:tipo_imovel,0|boolean',
         ];
