@@ -2,6 +2,7 @@ import './bootstrap';
 import Swiper from 'swiper';
 import 'swiper/css';
 import Swal from 'sweetalert2';
+import Alpine from 'alpinejs'
 
 window.Swal = Swal;
 
@@ -41,4 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
             prevEl: '.swiper-button-prev',
         },
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.Alpine = Alpine;
+    Alpine.start();
 });
