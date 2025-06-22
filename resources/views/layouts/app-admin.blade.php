@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', "Admin Dashboard") - Toca da Ca</title>
+    <link rel="icon" href="{{ asset('imgs/favicon.jpg') }}" type="image/png">
 
     @if (session('success'))
         <meta name="success" content="{{ session('success') }}">

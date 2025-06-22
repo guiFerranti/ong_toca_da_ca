@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração - Sistema</title>
+    <link rel="icon" href="{{ asset('imgs/favicon.jpg') }}" type="image/png">
+    <title>Toca da Cá</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 font-sans antialiased min-h-screen flex flex-col">
