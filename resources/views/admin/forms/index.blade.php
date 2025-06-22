@@ -24,8 +24,8 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ações</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Status</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Ações</th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -34,7 +34,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $form->id }}</td>
                         <td class="px-6 py-4">{{ $form->created_at->format('d/m/Y H:i') }}</td>
                         <td class="px-6 py-4">{{ $form->nome }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 flex items-center justify-center">
                             <select class="status-select border rounded px-2 py-1 text-sm
                             {{ !$form->status || $form->status === 'Não lido' ? 'bg-red-100 text-red-800' :
                                ($form->status === 'Lido' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800') }}"

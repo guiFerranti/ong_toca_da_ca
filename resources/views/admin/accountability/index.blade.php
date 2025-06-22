@@ -19,7 +19,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Valor</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Descrição</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Comprovante</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ações</th>
+                    <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Ações</th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">

@@ -16,23 +16,6 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
-public function login(Request $request)
-{
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required', 'string'],
-    ]);
-
-    if (Auth::guard('admin')->attempt($credentials)) {
-        return redirect()->route('admin.index');
-    }
-
-
-    return back()->withErrors([
-        'email' => 'As credenciais fornecidas são inválidas.',
-    ]);
-}
-
     public function showRegisterForm()
     {
         return view('admin.auth.register');
@@ -40,6 +23,8 @@ public function login(Request $request)
 
     public function register(Request $request)
     {
+        // invalidando rota
+        return false;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:admins,email'],
@@ -55,6 +40,23 @@ public function login(Request $request)
         Auth::guard('admin')->login($admin);
 
         return redirect()->route('admin.index');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('admin.index');
+        }
+
+
+        return back()->withErrors([
+            'email' => 'As credenciais fornecidas são inválidas.',
+        ]);
     }
 
     public function logout(Request $request)
