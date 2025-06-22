@@ -12,9 +12,8 @@ class AdocaoController extends Controller
 {
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $rules = [
             'id_pet' => 'required|integer|exists:animals,id',
-
             'nome' => 'required|string|max:255',
             'idade' => 'required|integer|max:100',
             'profissao' => 'required|string|max:255',
@@ -23,28 +22,25 @@ class AdocaoController extends Controller
             'endereco' => 'required|string|max:255',
             'tipo_moradia' => 'required|in:casa,apartamento,sitio',
             'tipo_imovel' => 'required|boolean',
-            'permite_pet' => 'required|boolean',
-
-            'tipo_pet' => 'required|in:cao,gato',
-            'nome_pet' => 'required|string|max:255',
 
             'qtd_pessoas' => 'required|integer',
             'todos_aceitam' => 'required|boolean',
             'tem_criancas' => 'required|boolean',
             'tem_animais' => 'required|boolean',
-            'animais_info' => 'required|string|max:255',
+            'animais_info' => 'required_if:tem_animais,1',
             'todos_vacinados' => 'required|boolean',
             'local_dia' => 'required|string|max:255',
             'local_noite' => 'required|string|max:255',
             'acesso_interno' => 'required|boolean',
-
             'ciente_longevidade' => 'required|boolean',
             'cond_financeira' => 'required|boolean',
             'ja_abandonou' => 'required|boolean',
             'motivo_abandono' => 'required|string|max:255',
             'aceita_termo' => 'required|boolean',
-        ], ['*.required' => 'Campo obrigatório', '*.max' => 'Valor inválido']);
+            'permite_pet' => 'required_if:tipo_imovel,0|boolean',
+        ];
 
+        $data = $request->validate($rules, ['*.required' => 'Campo obrigatório', '*.max' => 'Valor inválido']);
 
         $adocao = Adocao::create($data);
 

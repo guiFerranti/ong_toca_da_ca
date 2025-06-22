@@ -68,7 +68,7 @@
 <div class="flex min-h-screen">
     <aside class="w-64 bg-gray-800 text-white">
         <div class="p-6">
-            <div class="text-xl font-bold mb-4">
+            <div class="text-xl font-bold mb-4 min-h-[130px]">
                 <img src="{{ asset('imgs/logo.jpg') }}" alt="Admin Logo" class="w-32 mx-auto">
             </div>
             <nav class="mt-8">

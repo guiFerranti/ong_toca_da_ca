@@ -34,7 +34,7 @@
                             @endif
                         </p>
                         <p class="text-sm text-gray-500 mt-1">
-                            {{ $notification->created_at->diffForHumans() }}
+                            {{ $notification->created_at->locale('pt_BR')->diffForHumans() }}
                         </p>
                     </div>
 
