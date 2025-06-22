@@ -12,7 +12,7 @@ class Apadrinhamento extends Model
     protected $table = 'apadrinhamentos';
     protected $fillable = [
         'nome',
-        'nascimento',
+        'idade',
         'cpf',
         'telefone',
         'email',
@@ -33,7 +33,7 @@ class Apadrinhamento extends Model
     {
         return [
             'nome' => 'Nome completo',
-            'nascimento' => 'Data de nascimento',
+            'idade' => 'Idade',
             'cpf' => 'CPF',
             'telefone' => 'Telefone',
             'email' => 'E-mail',
@@ -53,7 +53,7 @@ class Apadrinhamento extends Model
     {
         return [
             'Informações Pessoais' => [
-                'nome', 'nascimento', 'cpf', 'telefone', 'email', 'endereco'
+                'nome', 'idade', 'cpf', 'telefone', 'email', 'endereco'
             ],
             'Sobre o Apadrinhamento' => [
                 'tipo_pet', 'nome_pet', 'tipo_apadrinhamento', 'contribuicao',

@@ -9,10 +9,6 @@
 
             <input type="hidden" name="id_pet" value="{{ $id_pet }}">
 
-            @foreach($errors->all() as $error)
-                {{$error}}
-            @endforeach
-
             <div class="bg-gray-50 p-4 sm:p-6 rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -26,11 +22,11 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 mb-1">Data de nascimento</label>
-                        <input type="date" name="nascimento"
-                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('nascimento') border-red-500 @enderror"
-                               value="{{ old('nascimento') }}">
-                        @error('nascimento')
+                        <label class="block text-gray-700 mb-1">Idade</label>
+                        <input type="number" name="idade" placeholder="Idade"
+                               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('idade') border-red-500 @enderror"
+                               value="{{ old('idade') }}">
+                        @error('idade')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>

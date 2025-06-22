@@ -14,7 +14,7 @@ class ApadrinhamentoController extends Controller
     {
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
-            'nascimento' => 'required|date',
+            'idade' => 'required|integer',
             'cpf' => 'required|string|max:20',
             'telefone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
