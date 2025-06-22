@@ -39,7 +39,7 @@
         </div>
 
         <div class="bg-white rounded-lg shadow overflow-x-auto mb-6">
-            <h2 class="text-lg font-semibold p-4 bg-gray-100">Users</h2>
+            <h2 class="text-lg font-semibold p-4 bg-gray-100">Usuários</h2>
             <table class="min-w-full table-fixed divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                 <tr>
