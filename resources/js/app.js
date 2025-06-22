@@ -3,6 +3,8 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import Swal from 'sweetalert2';
 
+window.Swal = Swal;
+
 window.Toast = Swal.mixin({
     toast: true,
     position: 'top-end',

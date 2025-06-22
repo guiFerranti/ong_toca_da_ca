@@ -10,6 +10,16 @@
 
     @if (session('success'))
         <meta name="success" content="{{ session('success') }}">
+
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text: '{{ session('success') }}',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        </script>
     @endif
 
     @if (session('error'))
@@ -17,7 +27,7 @@
     @endif
 
     {{--<script src="https://cdn.tailwindcss.com"></script>--}}
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css'])
     @yield('head')
 </head>
 @php
