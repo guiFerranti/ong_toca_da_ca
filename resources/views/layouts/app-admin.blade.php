@@ -32,30 +32,37 @@
 </head>
 @php
     $adminRoutes = [
-        [
-            'label' => 'Animais',
-            'icon'  => asset(''),
-            'route' => route('admin.animals.index'),
-        ],
-        [    'label' => 'Formulários',
-            'icon'  => asset(''),
-            'route' => route('admin.animals.forms.index'),
-        ],
-        [    'label' => 'Prestação de contas',
-            'icon'  => asset(''),
-            'route' => route('admin.accountability.index'),
-        ],
-        [
-            'label' => 'Administradores',
-            'icon'  => asset(''),
-            'route' => route('admin.users.index'),
-        ],
-        [
-            'label' => 'Conteúdo gerenciável',
-            'icon'  => asset(''),
-            'route' => route('admin.contents.index'),
-        ],
-    ];
+    [
+        'label' => 'Animais',
+        'icon'  => asset(''),
+        'route' => route('admin.animals.index'),
+        'name'  => 'admin.animals.index'
+    ],
+    [
+        'label' => 'Formulários',
+        'icon'  => asset(''),
+        'route' => route('admin.animals.forms.index'),
+        'name'  => 'admin.animals.forms.index'
+    ],
+    [
+        'label' => 'Prestação de contas',
+        'icon'  => asset(''),
+        'route' => route('admin.accountability.index'),
+        'name'  => 'admin.accountability.index'
+    ],
+    [
+        'label' => 'Administradores',
+        'icon'  => asset(''),
+        'route' => route('admin.users.index'),
+        'name'  => 'admin.users.index'
+    ],
+    [
+        'label' => 'Conteúdo gerenciável',
+        'icon'  => asset(''),
+        'route' => route('admin.contents.index'),
+        'name'  => 'admin.contents.index'
+    ],
+];
 @endphp
 <body class="bg-gray-100">
 <div class="flex min-h-screen">
@@ -66,10 +73,47 @@
             </div>
             <nav class="mt-8">
                 <ul>
+                    @php
+                        use Illuminate\Support\Str;
+
+                        $currentRouteName = request()->route()->getName();
+
+                        $prefixes = collect($adminRoutes)->map(function($route) {
+                            $parts = explode('.', $route['name']);
+                            return [
+                                'full_prefix' => implode('.', array_slice($parts, 0, -1)),
+                                'length' => count($parts) - 1
+                            ];
+                        })->toArray();
+                    @endphp
+
                     @foreach ($adminRoutes as $route)
+                        @php
+                            $parts = explode('.', $route['name']);
+                            $fullPrefix = implode('.', array_slice($parts, 0, -1));
+                            $prefixLength = count($parts) - 1;
+
+                            $isActive = $currentRouteName === $route['name'];
+
+                            if (!$isActive && $prefixLength > 0) {
+                                $matchesThisPrefix = Str::startsWith($currentRouteName, $fullPrefix . '.');
+
+                                $hasLongerMatch = false;
+                                foreach ($prefixes as $prefix) {
+                                    if ($prefix['length'] > $prefixLength &&
+                                        Str::startsWith($currentRouteName, $prefix['full_prefix'] . '.')) {
+                                        $hasLongerMatch = true;
+                                        break;
+                                    }
+                                }
+
+                                $isActive = $matchesThisPrefix && !$hasLongerMatch;
+                            }
+                        @endphp
+
                         <li class="mb-4">
                             <a href="{{ $route['route'] }}"
-                               class="block py-2 px-4 rounded hover:bg-gray-700 transition">
+                               class="block py-2 px-4 rounded hover:bg-gray-700 transition {{ $isActive ? 'bg-gray-700' : '' }}">
                                 {{ $route['label'] }}
                             </a>
                         </li>
