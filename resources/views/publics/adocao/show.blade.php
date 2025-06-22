@@ -2,15 +2,24 @@
 
 @section('content')
     <div class="h-full w-full flex flex-col items-center">
-        <div class="flex gap-10 w-2/3 py-8 items-center justify-center">
+        <div class="flex gap-4 w-2/3 py-8 items-center justify-center">
+            <a href="{{ route('adocao.show') }}">
+                <button class="px-6 py-2 font-bold rounded-md transition-colors duration-200
+            {{ request()->routeIs('adocao.show') ? 'bg-[#0c9d44] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
+                    TODOS
+                </button>
+            </a>
+
             <a href="{{ route('adocao.gatos.show') }}">
-                <button class="bg-[#0c9d44] px-6 py-2 text-white font-bold rounded-md">
+                <button class="px-6 py-2 font-bold rounded-md transition-colors duration-200
+            {{ request()->routeIs('adocao.gatos.show') ? 'bg-[#0c9d44] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
                     GATOS
                 </button>
             </a>
 
             <a href="{{ route('adocao.cachorros.show') }}">
-                <button class="bg-[#0c9d44] px-6 py-2 text-white font-bold rounded-md">
+                <button class="px-6 py-2 font-bold rounded-md transition-colors duration-200
+            {{ request()->routeIs('adocao.cachorros.show') ? 'bg-[#0c9d44] text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300' }}">
                     CACHORROS
                 </button>
             </a>
