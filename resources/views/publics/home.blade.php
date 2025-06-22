@@ -102,7 +102,7 @@
                     </div>
                     <div class="p-4">
                         <p class="text-3xl font-bold mb-2">3</p>
-                        <p class="text-sm">Animais por mês</p>
+                        <p class="text-sm">Animais adotados por mês</p>
                     </div>
                     <div class="p-4">
                         <p class="text-3xl font-bold mb-2">5+</p>

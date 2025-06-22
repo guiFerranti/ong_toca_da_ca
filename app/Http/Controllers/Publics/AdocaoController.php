@@ -69,7 +69,6 @@ class AdocaoController extends Controller
     public function show()
     {
         $animaisAtivos = Animal::where('is_active', 1)
-            ->where('tipo', 'Gato')
             ->get();
 
         return view('publics.adocao.show', [
