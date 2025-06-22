@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Adocao extends Model
@@ -52,4 +53,8 @@ class Adocao extends Model
         return $query->orderByRaw("FIELD(status, 'Não lido', 'Lido', 'Concluído')");
     }
 
+    public function pet(): BelongsTo
+    {
+        return $this->belongsTo(Animal::class, 'id_pet');
+    }
 }

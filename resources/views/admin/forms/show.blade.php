@@ -8,10 +8,22 @@
                     <h1 class="text-2xl font-bold text-gray-800">Detalhes do Formulário</h1>
                     <p class="text-gray-600">ID: {{ $form->id }}</p>
                     <p class="text-gray-600">Data: {{ $form->created_at->format('d/m/Y H:i') }}</p>
+
+                    <!-- Informações do Pet -->
+                    @if($form->pet)
+                        <div class="mt-2">
+                            <p class="text-gray-600">Animal:
+                                <a href="{{ route('admin.animals.edit', $form->pet->id) }}"
+                                   class="text-blue-600 hover:text-blue-800 hover:underline">
+                                    {{ $form->pet->nome }} ({{ $form->pet->tipo }})
+                                </a>
+                            </p>
+                        </div>
+                    @endif
                 </div>
 
                 <select class="status-select border rounded px-2 py-1 text-sm
-                {{ $form->status || $form->status === 'Não lido' ? 'bg-red-100 text-red-800' :
+                {{ $form->status === 'Não lido' ? 'bg-red-100 text-red-800' :
                    ($form->status === 'Lido' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800') }}"
                         data-type="{{ $type }}"
                         data-id="{{ $form->id }}">
@@ -23,21 +35,44 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @foreach($form->getAttributes() as $key => $value)
-                    @if(!in_array($key, ['id', 'created_at', 'updated_at', 'status']))
+                    @if(!in_array($key, ['id', 'created_at', 'updated_at', 'status', 'deleted_at', 'id_pet']))
                         <div class="bg-gray-50 p-4 rounded-lg">
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-1">{{ ucfirst(str_replace('_', ' ', $key)) }}</label>
-                            <p class="text-gray-900">{{ $value ?? 'N/A' }}</p>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">
+                                {{ ucfirst(str_replace('_', ' ', $key)) }}
+                            </label>
+                            <p class="text-gray-900">
+                                @if(is_null($value))
+                                    <span class="text-gray-400">Não preenchido</span>
+                                @elseif($value === 0 || $value === '0' || $value === false)
+                                    <span class="text-red-500">Não</span>
+                                @elseif($value === 1 || $value === '1' || $value === true)
+                                    <span class="text-green-600">Sim</span>
+                                @else
+                                    {{ $value }}
+                                @endif
+                            </p>
                         </div>
                     @endif
                 @endforeach
             </div>
 
-            <div class="mt-6">
+            <div class="mt-6 flex justify-between">
                 <a href="{{ route('admin.animals.forms.index', ['type' => $type]) }}"
                    class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
                     Voltar
                 </a>
+
+                @if($form->pet)
+                    <a href="{{ route('admin.animals.edit', $form->pet->id) }}"
+                       class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                             fill="currentColor">
+                            <path
+                                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                        </svg>
+                        Editar Animal
+                    </a>
+                @endif
             </div>
         </div>
     </div>
