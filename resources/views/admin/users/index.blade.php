@@ -38,31 +38,31 @@
             </table>
         </div>
 
-        <div class="bg-white rounded-lg shadow overflow-x-auto mb-6">
-            <h2 class="text-lg font-semibold p-4 bg-gray-100">Usuários</h2>
-            <table class="min-w-full table-fixed divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                <tr>
-                    <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>
-                    <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                    <th class="w-1/3 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Ações</th>
-                </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                @foreach($users as $user)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
-                        <td class="px-6 py-4">{{ $user->email }}</td>
-                        <td class="w-full flex items-center justify-center px-6 py-4">
-                            <a href="{{ route('admin.users.edit', ['user', $user->id]) }}"
-                               class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition-colors">
-                                Editar
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+        {{--<div class="bg-white rounded-lg shadow overflow-x-auto mb-6">--}}
+        {{--    <h2 class="text-lg font-semibold p-4 bg-gray-100">Usuários</h2>--}}
+        {{--    <table class="min-w-full table-fixed divide-y divide-gray-200">--}}
+        {{--        <thead class="bg-gray-50">--}}
+        {{--        <tr>--}}
+        {{--            <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nome</th>--}}
+        {{--            <th class="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>--}}
+        {{--            <th class="w-1/3 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Ações</th>--}}
+        {{--        </tr>--}}
+        {{--        </thead>--}}
+        {{--        <tbody class="divide-y divide-gray-200">--}}
+        {{--        @foreach($users as $user)--}}
+        {{--            <tr>--}}
+        {{--                <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>--}}
+        {{--                <td class="px-6 py-4">{{ $user->email }}</td>--}}
+        {{--                <td class="w-full flex items-center justify-center px-6 py-4">--}}
+        {{--                    <a href="{{ route('admin.users.edit', ['user', $user->id]) }}"--}}
+        {{--                       class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition-colors">--}}
+        {{--                        Editar--}}
+        {{--                    </a>--}}
+        {{--                </td>--}}
+        {{--            </tr>--}}
+        {{--        @endforeach--}}
+        {{--        </tbody>--}}
+        {{--    </table>--}}
+        {{--</div>--}}
     </div>
 @endsection

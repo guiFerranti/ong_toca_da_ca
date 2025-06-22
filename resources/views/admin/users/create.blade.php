@@ -40,17 +40,17 @@
                        class="w-full border border-gray-300 rounded px-4 py-2 focus:ring focus:ring-blue-500">
             </div>
 
-            <div>
-                <label class="block text-gray-700 font-medium mb-2">Tipo de Usuário *</label>
-                <select name="type" class="w-full border border-gray-300 rounded px-4 py-2">
-                    <option value="">Selecione...</option>
-                    <option value="admin" {{ old('type') == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="user" {{ old('type') == 'user' ? 'selected' : '' }}>Usuário</option>
-                </select>
-                @error('type')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+            {{--<div>--}}
+            {{--    <label class="block text-gray-700 font-medium mb-2">Tipo de Usuário *</label>--}}
+            {{--    <select name="type" class="w-full border border-gray-300 rounded px-4 py-2">--}}
+            {{--        <option value="">Selecione...</option>--}}
+            {{--        <option value="admin" {{ old('type') == 'admin' ? 'selected' : '' }}>Admin</option>--}}
+            {{--        <option value="user" {{ old('type') == 'user' ? 'selected' : '' }}>Usuário</option>--}}
+            {{--    </select>--}}
+            {{--    @error('type')--}}
+            {{--    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>--}}
+            {{--    @enderror--}}
+            {{--</div>--}}
 
             <div class="flex justify-end gap-3">
                 <a href="{{ route('admin.users.index') }}"

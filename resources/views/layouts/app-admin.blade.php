@@ -32,37 +32,42 @@
 </head>
 @php
     $adminRoutes = [
-    [
-        'label' => 'Animais',
-        'icon'  => asset(''),
-        'route' => route('admin.animals.index'),
-        'name'  => 'admin.animals.index'
-    ],
-    [
-        'label' => 'Formulários',
-        'icon'  => asset(''),
-        'route' => route('admin.animals.forms.index'),
-        'name'  => 'admin.animals.forms.index'
-    ],
-    [
-        'label' => 'Prestação de contas',
-        'icon'  => asset(''),
-        'route' => route('admin.accountability.index'),
-        'name'  => 'admin.accountability.index'
-    ],
-    [
-        'label' => 'Administradores',
-        'icon'  => asset(''),
-        'route' => route('admin.users.index'),
-        'name'  => 'admin.users.index'
-    ],
-    [
-        'label' => 'Conteúdo gerenciável',
-        'icon'  => asset(''),
-        'route' => route('admin.contents.index'),
-        'name'  => 'admin.contents.index'
-    ],
-];
+        [
+            'label' => 'Animais',
+            'icon' => asset(''),
+            'route' => route('admin.animals.index'),
+            'name' => 'admin.animals.index',
+            'admin_only' => false
+        ],
+        [
+            'label' => 'Formulários',
+            'icon' => asset(''),
+            'route' => route('admin.animals.forms.index'),
+            'name' => 'admin.animals.forms.index',
+            'admin_only' => false
+        ],
+        [
+            'label' => 'Prestação de contas',
+            'icon' => asset(''),
+            'route' => route('admin.accountability.index'),
+            'name' => 'admin.accountability.index',
+            'admin_only' => false
+        ],
+        [
+            'label' => 'Administradores',
+            'icon' => asset(''),
+            'route' => route('admin.users.index'),
+            'name' => 'admin.users.index',
+            'admin_only' => true
+        ],
+        [
+            'label' => 'Conteúdo gerenciável',
+            'icon' => asset(''),
+            'route' => route('admin.contents.index'),
+            'name' => 'admin.contents.index',
+            'admin_only' => false
+        ],
+    ];
 @endphp
 <body class="bg-gray-100">
 <div class="flex min-h-screen">
@@ -89,6 +94,11 @@
 
                     @foreach ($adminRoutes as $route)
                         @php
+                            $isAdmin = auth()->user() instanceof \App\Models\Admin;
+                            if ($route['admin_only'] && !$isAdmin) {
+                                continue;
+                            }
+
                             $parts = explode('.', $route['name']);
                             $fullPrefix = implode('.', array_slice($parts, 0, -1));
                             $prefixLength = count($parts) - 1;

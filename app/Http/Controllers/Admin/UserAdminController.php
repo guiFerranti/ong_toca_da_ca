@@ -24,7 +24,6 @@ class UserAdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-            'type' => 'required|in:admin,user',
         ], [
             'name.required' => 'O nome é obrigatório.',
             'name.string' => 'O nome deve ser um texto.',
@@ -46,6 +45,7 @@ class UserAdminController extends Controller
         $data = $validated;
         $data['password'] = bcrypt($data['password']);
 
+        $validated['type'] = 'admin';
         if ($validated['type'] === 'admin') {
             Admin::create($data);
         } else {
