@@ -27,9 +27,12 @@ class FormsController extends Controller
             ? Adocao::findOrFail($id)
             : Apadrinhamento::findOrFail($id);
 
-        return view('admin.forms.show', compact('form', 'type'));
-    }
+        $fieldLabels = $form::getFieldLabels();
+        $fieldGroups = $form::getFieldGroups();
 
+        return view('admin.forms.show', compact('form', 'type', 'fieldLabels', 'fieldGroups'));
+    }
+    
     public function updateStatus(Request $request, $type, $id)
     {
         $request->validate(['status' => 'required|in:Não lido,Lido,Concluído']);

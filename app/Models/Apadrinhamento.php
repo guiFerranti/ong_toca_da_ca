@@ -29,6 +29,39 @@ class Apadrinhamento extends Model
         'status'
     ];
 
+    public static function getFieldLabels()
+    {
+        return [
+            'nome' => 'Nome completo',
+            'nascimento' => 'Data de nascimento',
+            'cpf' => 'CPF',
+            'telefone' => 'Telefone',
+            'email' => 'E-mail',
+            'endereco' => 'Endereço completo',
+            'tipo_pet' => 'Tipo de pet',
+            'nome_pet' => 'Nome do pet',
+            'tipo_apadrinhamento' => 'Tipo de apadrinhamento',
+            'contribuicao' => 'Valor ou tipo de contribuição',
+            'frequencia' => 'Frequência',
+            'visita_regular' => 'Disposto a visitar o pet',
+            'receber_atualizacoes' => 'Deseja receber atualizações',
+            'aceita_termos' => 'Aceita o termo de compromisso',
+        ];
+    }
+
+    public static function getFieldGroups()
+    {
+        return [
+            'Informações Pessoais' => [
+                'nome', 'nascimento', 'cpf', 'telefone', 'email', 'endereco'
+            ],
+            'Sobre o Apadrinhamento' => [
+                'tipo_pet', 'nome_pet', 'tipo_apadrinhamento', 'contribuicao',
+                'frequencia', 'visita_regular', 'receber_atualizacoes', 'aceita_termos'
+            ]
+        ];
+    }
+
     public function scopeStatusOrder($query)
     {
         return $query->orderByRaw("FIELD(status, 'Não lido', 'Lido', 'Concluído')");

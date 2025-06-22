@@ -33,26 +33,45 @@
                 </select>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                @foreach($form->getAttributes() as $key => $value)
-                    @if(!in_array($key, ['id', 'created_at', 'updated_at', 'status', 'deleted_at', 'id_pet']))
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">
-                                {{ ucfirst(str_replace('_', ' ', $key)) }}
-                            </label>
-                            <p class="text-gray-900">
-                                @if(is_null($value))
-                                    <span class="text-gray-400">Não preenchido</span>
-                                @elseif($value === 0 || $value === '0' || $value === false)
-                                    <span class="text-red-500">Não</span>
-                                @elseif($value === 1 || $value === '1' || $value === true)
-                                    <span class="text-green-600">Sim</span>
-                                @else
-                                    {{ $value }}
-                                @endif
-                            </p>
+            <div class="space-y-8">
+                @foreach($fieldGroups as $groupName => $fields)
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="bg-gray-100 px-4 py-3 border-b">
+                            <h3 class="text-lg font-medium text-gray-900">{{ $groupName }}</h3>
                         </div>
-                    @endif
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+                            @foreach($fields as $field)
+                                @if(array_key_exists($field, $fieldLabels))
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                                            {{ $fieldLabels[$field] }}
+                                        </label>
+                                        <p class="text-gray-900">
+                                            @php
+                                                $value = $form->{$field};
+                                            @endphp
+
+                                            @if(is_null($value))
+                                                <span class="text-gray-400">Não preenchido</span>
+                                            @elseif($value === 0 || $value === '0' || $value === false)
+                                                <span class="text-red-500">Não</span>
+                                            @elseif($value === 1 || $value === '1' || $value === true)
+                                                <span class="text-green-600">Sim</span>
+                                            @elseif($field === 'tipo_moradia')
+                                                {{ $value === 'casa' ? 'Casa' : ($value === 'apartamento' ? 'Apartamento' : 'Sítio/Chácara') }}
+                                            @elseif($field === 'tipo_imovel')
+                                                {{ $value == 1 ? 'Próprio' : 'Alugado' }}
+                                            @elseif($field === 'frequencia')
+                                                {{ $value === 'Semanal' ? 'Semanal' : ($value === 'Quinzenal' ? 'Quinzenal' : ($value === 'Mensal' ? 'Mensal' : 'Única')) }}
+                                            @else
+                                                {{ $value }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                 @endforeach
             </div>
 
