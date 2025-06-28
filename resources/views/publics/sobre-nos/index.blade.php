@@ -22,14 +22,14 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M12 4v1m6 11h2m-6 0h-2m4-10a4 4 0 11-8 0 4 4 0 018 0zM4 20a2 2 0 012-2h12a2 2 0 012 2v1H4v-1z"/>
                         </svg>
-                        <p>Na enchente de 2023, mesmo no caos, os animais continuaram chegando. E a gente nunca soube
+                        <p>Na enchente de 2024, mesmo no caos, os animais continuaram chegando. E a gente nunca soube
                             dizer "não". Assim, entre amor e necessidade, nasceu a Toca da Cá.</p>
                     </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6 mt-12">
                     <div class="bg-white/10 p-6 rounded-xl">
-                        <p class="text-3xl font-bold mb-2">2+</p>
+                        <p class="text-3xl font-bold mb-2">10+</p>
                         <p class="text-sm uppercase tracking-wide">Anos de dedicação</p>
                     </div>
                     <div class="bg-white/10 p-6 rounded-xl">
